@@ -54,7 +54,8 @@ public class dialogue {
                         "He freezes the surrounding area. There's no escape! " +
                         "You and your Paulo-mon must fight to survive. ";
             case 22:
-                text =
+                text = "What! You can't run away, that's cheating!";
+                /*
             case 23:
                 text =
             case 24:
@@ -79,10 +80,7 @@ public class dialogue {
                 text =
             case 34:
                 text =
-
-
-
-
+                        */
         }
 
         return text;
