@@ -6,6 +6,7 @@ import battle_system.Movelist.*;
 public abstract class Fighter {
 
     private String name;
+    private String animal;
     private TypeList type;
 
     // Base stats
@@ -35,6 +36,8 @@ public abstract class Fighter {
 //    private int spe;
     private int[] statsActual = new int[6];
 
+    private int hpCurrent;
+
     // Moves
 //    private Move move1;
 //    private Move move2;
@@ -43,6 +46,7 @@ public abstract class Fighter {
     private Move[] moveset = new Move[4];
 
     Fighter(String name,
+            String animal,
             TypeList type,
             // Stats
             int baseHp,
@@ -56,6 +60,7 @@ public abstract class Fighter {
             Move move2,
             Move move3) {
         this.name = name;
+        this.animal = animal;
         this.type = type;
         setStatsBase(baseHp,
                 baseAtk,
@@ -82,6 +87,7 @@ public abstract class Fighter {
 //        this.baseSpD = baseSpD;
 //        this.baseSpe = baseSpe;
         statsBase[0] = baseHp;
+        hpCurrent = baseHp;
         statsBase[1] = baseAtk;
         statsBase[2] = baseDef;
         statsBase[3] = baseSpA;
@@ -115,6 +121,24 @@ public abstract class Fighter {
         }
     }
 
+    private void verifyHp() {
+        if (hpCurrent > getHpMax()) {
+            hpCurrent = getHpMax();
+        } else if (hpCurrent < 0) {
+            hpCurrent = 0;
+        }
+    }
+
+    public void modifyHp(int hp) {
+        hpCurrent += hp;
+        verifyHp();
+    }
+
+    public void takeDamage(int damage) {
+        hpCurrent -= damage;
+        verifyHp();
+    }
+
     public void setMove(int index, Move move) {
         if (verifyChoice(index, 1, 4, "setting a move")) {
             moveset[index-1] = move;
@@ -129,6 +153,7 @@ public abstract class Fighter {
     }
 
     public String getName() {return name;}
+    public String getAnimal() {return animal;}
     public TypeList getType() {return type;}
 
     private int getStat(int index, int[] statArr) {
@@ -143,6 +168,8 @@ public abstract class Fighter {
     public int[] getStatsMod() {return statsMod;}
     public int getStatsActualSingle(int index) {return getStat(index, statsActual);}
     public int[] getStatsActual() {return statsActual;}
+    public int getHpCurrent() {return hpCurrent;}
+    public int getHpMax() {return getStatsActualSingle(0);}
     public Move[] getMoveset() {return moveset;}
     public Move getMove(int index) {
         if (verifyChoice(index, 1, 4, "getting a move")) {

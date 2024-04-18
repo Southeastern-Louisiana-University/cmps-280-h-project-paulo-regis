@@ -11,7 +11,7 @@ public class Burning extends Status {
 
     @Override
     public void applyEffect(Fighter target) {
-        // deal DoT
+        target.takeDamage(getDamageOverTime());
     }
 
     @Override

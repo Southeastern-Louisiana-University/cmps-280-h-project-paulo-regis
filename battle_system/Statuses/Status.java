@@ -17,6 +17,7 @@ public abstract class Status {
         this.damageOverTime = damageOverTime;
     }
 
+    // TODO: Happens at the end of a round
     public void decrementDuration() {
         if (duration > 0) {duration--;}
         if (duration == 0) {endEffect(target);}
@@ -25,7 +26,9 @@ public abstract class Status {
     public String getName() {return name;}
     public int getDuration() {return duration;}
     public Fighter getTarget() {return target;}
+    public int getDamageOverTime() {return damageOverTime;}
 
+    // TODO: Happens on the target's turn
     public abstract void applyEffect(Fighter target);
     public abstract void endEffect(Fighter target);
 

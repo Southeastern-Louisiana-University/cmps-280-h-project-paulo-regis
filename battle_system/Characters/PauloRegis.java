@@ -8,8 +8,9 @@ public class PauloRegis extends Fighter {
     //random type
     public PauloRegis() {
         super("Paulo Regis",
+                "Demigod of Eternal Winter",
                 TypeList.ICE,
-                0,
+                300,
                 0,
                 0,
                 0,
@@ -17,7 +18,7 @@ public class PauloRegis extends Fighter {
                 0,
                 null,
                 null,
-                null);
+                new Block("Icy Shield"));
     }
 
     public void dialogue() {
