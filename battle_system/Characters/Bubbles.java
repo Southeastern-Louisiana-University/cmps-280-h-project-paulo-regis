@@ -14,13 +14,13 @@ public class Bubbles extends Fighter {
                 0,
                 0,
                 0,
-                null,
+                new BubbleBazooka(),
                 new Regenerate(),
                 new Block("Block"));
     }
     //water type
     @Override
-    public void useMove(String move) {
+    public void useMove(Move move) {
 
     }
 }

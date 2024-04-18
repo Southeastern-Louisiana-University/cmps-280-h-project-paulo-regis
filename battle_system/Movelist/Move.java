@@ -1,5 +1,7 @@
 package battle_system.Movelist;
 
+import battle_system.Characters.Fighter;
+import battle_system.Statuses.*;
 import battle_system.TypeList;
 
 public abstract class Move {
@@ -8,7 +10,9 @@ public abstract class Move {
     private Category category;
     private int power;
     private int accuracy; // hits if Math.ceiling(Math.random()*100)<accuracy (accuracy 0-100)
-    private String inflicts; // possible status
+    private Status inflicts; // possible status
+
+    private Fighter target;
 
     public enum Category {
         PHYSICAL,
@@ -21,7 +25,7 @@ public abstract class Move {
          Category category,
          int power,
          int accuracy,
-         String inflicts) {
+         Status inflicts) {
         this.name = name;
         this.type = type;
         this.category = category;
@@ -35,17 +39,23 @@ public abstract class Move {
          Category category,
          int power,
          int accuracy) {
-        this(name, type, category, power, accuracy, "None");
+        this(name, type, category, power, accuracy, null);
     }
+
+    public void setTarget(Fighter target) {this.target = target;}
 
     public String getName() {return name;}
     public TypeList getType() {return type;}
     public Category getCategory() {return category;}
     public int getPower() {return power;}
     public int getAccuracy() {return accuracy;}
-    public String getInflicts() {return inflicts;}
+    public Status getInflicts() {return inflicts;}
+    public Fighter getTarget() {return target;}
+
     public void describeMove() {
         System.out.println("Move: " + name);
     }
 
+    public abstract void useMove(Move move, Fighter target);
+    public abstract void useMove(Move move);
 }

@@ -21,7 +21,7 @@ public class Pippin extends Fighter {
 
     //grass type
     @Override
-    public void useMove(String move) {
+    public void useMove(Move move) {
 
     }
 }
