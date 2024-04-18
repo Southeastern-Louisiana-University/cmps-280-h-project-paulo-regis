@@ -1,4 +1,4 @@
-public abstract class TurnSystem {
+public class TurnSystem {
     private boolean playerTurn = false;
 
     public boolean isPlayerTurn() {
