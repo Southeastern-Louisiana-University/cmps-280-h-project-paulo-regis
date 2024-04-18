@@ -5,7 +5,8 @@ import battle_system.Characters.Fighter;
 public class Dodging extends Status {
     public Dodging() {
         super("Dodging",
-                1);
+                1,
+                0);
     }
 
     @Override

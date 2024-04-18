@@ -5,7 +5,8 @@ import battle_system.Characters.Fighter;
 public class Burning extends Status {
     public Burning() {
         super("Burning",
-                3);
+                3,
+                10);
     }
 
     @Override

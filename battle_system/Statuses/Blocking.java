@@ -5,7 +5,8 @@ import battle_system.Characters.Fighter;
 public class Blocking extends Status {
     public Blocking() {
         super("Blocking",
-                1);
+                1,
+                0);
     }
 
     @Override

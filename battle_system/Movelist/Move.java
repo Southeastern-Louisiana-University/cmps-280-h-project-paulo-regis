@@ -11,6 +11,7 @@ public abstract class Move {
     private int power;
     private int accuracy; // hits if Math.ceiling(Math.random()*100)<accuracy (accuracy 0-100)
     private Status inflicts; // possible status
+    // TODO: Implement priority for Blocking and Dodging
 
     private Fighter target;
 

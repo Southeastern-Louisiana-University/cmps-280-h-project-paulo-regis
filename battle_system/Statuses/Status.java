@@ -10,9 +10,11 @@ public abstract class Status {
     private int damageOverTime;
 
     Status(String name,
-           int duration) {
+           int duration,
+           int damageOverTime) {
         this.name = name;
         this.duration = duration;
+        this.damageOverTime = damageOverTime;
     }
 
     public void decrementDuration() {
