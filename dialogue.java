@@ -13,7 +13,7 @@ public class dialogue {
             case 4:
                 text = "You sunk an enemy battleship. Good work soldier.";
             case 5:
-                text = "The enemy has sunk one of your battleships. get your head in the game soldier.";
+                text = "The enemy has sunk one of your battleships. Get your head in the game soldier.";
             case 6:
                 text = "Choose your Paulo-mon";
             case 7:

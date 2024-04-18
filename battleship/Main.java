@@ -1,4 +1,5 @@
-package battleship;// ----------------------------------------------
+package battleship;
+// ----------------------------------------------
 //              JAVA BATTLESHIP
 // ----------------------------------------------
 //  A faithful recreation of the Battleship board game,
