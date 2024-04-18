@@ -16,6 +16,9 @@ public class dialogue {
                 text = "The enemy has sunk one of your battleships. get your head in the game soldier.";
             case 6:
                 text = "Choose your Paulo-mon";
+                //change it to wake up first and then be introduced to each paulo-mon.
+                //This way you can read the name tags and see the stats.
+                //Each paulo-mon will be used every round turn based.
             case 7:
                 text = "Bubbles: the pink lizard fish (aka the water axolotl power house)";
             case 8:
@@ -33,11 +36,11 @@ public class dialogue {
                         "Your eyes are facing the sky which looks like a bright blur as you blink to clear your vision. " +
                         "Your Paulo-mon climbs on top of you and licks your face. ";
             case 14:
-                text = "Are you happy to see me, Bubbles? ";
+                text = "\"Are you happy to see me, Bubbles?\" ";
             case 15:
-                text = "Are you happy to see me, Nova? ";
+                text = "\"Are you happy to see me, Nova?\" ";
             case 16:
-                text = "Are you happy to see me, Pippin? ";
+                text = "\"Are you happy to see me, Pippin?\" ";
             case 17:
                 text = "A tall dark figure enters, it's shadow draping over you. " +
                         "You stare into the figure's glowing eyes as it pulls it's hood back. " +
@@ -54,19 +57,29 @@ public class dialogue {
                         "He freezes the surrounding area. There's no escape! " +
                         "You and your Paulo-mon must fight to survive. ";
             case 22:
-                text =
+                text = "Your Paulo-mon lunges in front of you to protect you. " +
+                        "You must aid it in the fight against Dr. Regis. ";
             case 23:
-                text =
+                text = "Dr. Regis has been defeated. He's kneeling on the ground, head low." +
+                        "He looks up at you and says, \"Heh... You've beat me.\" " +
+                        "He quickly slashes the air around him with his hand creating a shell of ice. " +
+                        "He peers at you through a slot in the ice." +
+                        "He says to you, \"answer these three questions and I will spare your world. " +
+                        "Answer them incorrectly and I'll begin the next ice age. " +
+                        "Everything you know and love will be extinct!\" ";
             case 24:
-                text =
+                text = "He looks at his former pets standing around you, \"for every question you get wrong, " +
+                        "I'll freeze one of these three.";
             case 25:
-                text =
+                text = "What do you do?";
             case 26:
-                text =
+                text = "You say to him: \"Fine. I'll answer your questions. I won't let you destroy this world.\" ";
             case 27:
-                text =
+                text = "You say to him: \"No! I'm done dealing with you. I won't give you the time of day.\" ";
             case 28:
-                text =
+                text = "You walk up to his ice shell. You inspect the slot. You calmly turn around " +
+                        "and release the juiciest fart known to man into the slot. That taco bell did " +
+                        "not sit well with you. ";
             case 29:
                 text =
             case 30:
@@ -84,7 +97,14 @@ public class dialogue {
 
 
         }
-
+//For trivia, possibly freeze a Paulo-mon with each question answered wrong.
+// If time jumps have not been used yet, then player can use them on trivia twice.
+// There will be no time jump for the third and final question if they've been used.
+// The balance of the world is in your hand.
+// Showcase pocket watch that is stuck on a specific time when you look at it.
+// Whenever you get to the next stage then it'll set to that time for you to jump back to.
+// You won't know it's for time travel until you've been defeated.
+// When you jump back you feel weaker or faint. Maybe yo look pale or the pocket watch looks different.
         return text;
     }
 }
