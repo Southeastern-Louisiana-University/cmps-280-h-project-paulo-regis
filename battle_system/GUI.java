@@ -86,7 +86,7 @@ public class GUI {
      * [4] Flee
      */
 
-    /* (bossGUI)
+    /* TODO: (bossGUI)
      * Paulo Regis the Demigod of Eternal Winter: hp/maxHp
      */
 
