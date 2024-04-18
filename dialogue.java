@@ -79,7 +79,7 @@ public class dialogue {
             case 28:
                 text = "You walk up to his ice shell. You inspect the slot. You calmly turn around " +
                         "and release the juiciest fart known to man into the slot. That taco bell did " +
-                        "not sit well with you. ";
+                        "not sit well with you. "; //finish
             case 29:
                 text =
             case 30:
