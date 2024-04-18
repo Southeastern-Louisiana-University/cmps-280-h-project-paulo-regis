@@ -18,10 +18,4 @@ public class Pippin extends Fighter {
                 null,
                 new Block("Best Boy Block"));
     }
-
-    //grass type
-    @Override
-    public void useMove(Move move) {
-
-    }
 }

@@ -15,11 +15,12 @@ public class Dodge extends Move {
     }
 
     @Override
-    public void useMove(Move move) {
-        getInflicts().applyEffect(getTarget());
-    }
-    @Override
     public void useMove(Move move, Fighter target) {
         getInflicts().applyEffect(target);
+    }
+
+    @Override
+    public void useMove(Move move) {
+        getInflicts().applyEffect(getTarget());
     }
 }

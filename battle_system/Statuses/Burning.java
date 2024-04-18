@@ -2,19 +2,19 @@ package battle_system.Statuses;
 
 import battle_system.Characters.Fighter;
 
-public class Dodging extends Status {
-    public Dodging() {
-        super("Dodging",
-                1);
+public class Burning extends Status {
+    public Burning() {
+        super("Burning",
+                3);
     }
 
     @Override
     public void applyEffect(Fighter target) {
-        target.modifyStatsMod(5, 100);
+        // deal DoT
     }
 
     @Override
     public void endEffect(Fighter target) {
-        target.modifyStatsMod(5, -100);
+
     }
 }

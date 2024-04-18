@@ -2,19 +2,19 @@ package battle_system.Statuses;
 
 import battle_system.Characters.Fighter;
 
-public class Dodging extends Status {
-    public Dodging() {
-        super("Dodging",
+public class CantFlee extends Status {
+    public CantFlee() {
+        super("You can't flee from a trainer battle!",
                 1);
     }
 
     @Override
     public void applyEffect(Fighter target) {
-        target.modifyStatsMod(5, 100);
+        // haha funny?
     }
 
     @Override
     public void endEffect(Fighter target) {
-        target.modifyStatsMod(5, -100);
+
     }
 }

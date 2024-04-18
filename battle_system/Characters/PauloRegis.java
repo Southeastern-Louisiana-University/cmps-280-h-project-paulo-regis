@@ -20,11 +20,6 @@ public class PauloRegis extends Fighter {
                 null);
     }
 
-    @Override
-    public void useMove(Move move) {
-
-    }
-
     public void dialogue() {
 
     }

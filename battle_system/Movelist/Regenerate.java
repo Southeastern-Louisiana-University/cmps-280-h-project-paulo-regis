@@ -1,5 +1,6 @@
 package battle_system.Movelist;
 
+import battle_system.Characters.Fighter;
 import battle_system.TypeList;
 
 public class Regenerate extends Move {
@@ -10,6 +11,16 @@ public class Regenerate extends Move {
                 Category.STATUS,
                 -50,
                 100,
-                "None");
+                null);
+    }
+
+    @Override
+    public void useMove(Move move, Fighter target) {
+        // Regain hp
+    }
+
+    @Override
+    public void useMove(Move move) {
+
     }
 }

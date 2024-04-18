@@ -16,9 +16,6 @@ public class Nova extends Fighter {
                 new ScorchingScratch(),
                 null,
                 new Dodge());
-        getMove(1).setTarget(null); // TODO: find a way to target regis
-        getMove(2).setTarget(null);
-        getMove(3).setTarget(this);
-        getMove(4).setTarget(this);
+        setMoveTargets(null, null, this, this); // TODO: find a way to target regis
     }
 }

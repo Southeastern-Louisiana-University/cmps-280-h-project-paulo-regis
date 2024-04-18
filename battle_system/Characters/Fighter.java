@@ -121,6 +121,13 @@ public abstract class Fighter {
         }
     }
 
+    public void setMoveTargets(Fighter target1, Fighter target2, Fighter target3, Fighter target4) {
+        moveset[0].setTarget(target1);
+        moveset[1].setTarget(target2);
+        moveset[2].setTarget(target3);
+        moveset[3].setTarget(target4);
+    }
+
     public String getName() {return name;}
     public TypeList getType() {return type;}
 

@@ -18,9 +18,4 @@ public class Bubbles extends Fighter {
                 new Regenerate(),
                 new Block("Block"));
     }
-    //water type
-    @Override
-    public void useMove(Move move) {
-
-    }
 }
