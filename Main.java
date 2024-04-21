@@ -41,5 +41,6 @@ public class Main {
         System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||||||||");
         System.out.println("\t\t||||||||||||||||||||||||||||||||||||||||||||");
         System.out.println("GAME OVER");
+        System.exit(0);
     }
 }
