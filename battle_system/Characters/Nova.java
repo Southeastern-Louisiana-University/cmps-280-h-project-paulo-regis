@@ -6,6 +6,7 @@ import battle_system.TypeList;
 public class Nova extends Fighter {
     public Nova() {
         super("Nova",
+                "Kitten",
                 TypeList.FIRE,
                 125,
                 200, // high atk
