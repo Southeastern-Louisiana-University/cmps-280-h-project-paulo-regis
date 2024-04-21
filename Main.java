@@ -19,4 +19,27 @@ public class Main {
             System.out.println(e);
         }
     }
+
+    public static void gameOver() {
+        System.out.println("\t\t\t\t\t\t\t     ||||");
+        System.out.println("\t\t\t\t\t\t\t     |||||");
+        System.out.println("\t\t\t\t\t\t\t     ||||||");
+        System.out.println("\t\t\t\t\t\t\t     ||||||");
+        System.out.println("\t\t\t\t\t\t\t     |||||||");
+        System.out.println("\t\t\t\t\t\t\t     |||||||");
+        System.out.println("\t\t   ////\\\\\\\\   ////\\\\\\\\   |||||||   ////\\\\\\\\   ////\\\\\\\\");
+        System.out.println("\t\t   ||||||||   ||||||||   ||||||||  ||||||||   ||||||||");
+        System.out.println("||||||\\\\   ||||||||   ||||||||   ||||||||  ||||||||   ||||||||");
+        System.out.println("|||||\\\\\\\\  ||||||||   ||||||||   ||||||||  ||||||||   ||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("\t\t||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("GAME OVER");
+    }
 }
