@@ -10,6 +10,8 @@ public class Main {
 
         System.out.println("I am Paulo Regis. Let's jump RIGHT IN to our FIRST TRIAL, BATTLESHIP!");
 
+
+
     }
 
     public static void pause() {
