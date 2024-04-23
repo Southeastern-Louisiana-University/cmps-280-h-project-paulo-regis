@@ -88,6 +88,30 @@ public class BattleshipGame {
                     System.out.println(player1.getBoard().generateGameOverView(player2.getBoard()));
 
                     gameActive = false;
+
+                    if (player2 == winner) {
+                        System.out.println("\t\t\t\t      ||||");
+                        System.out.println("\t\t\t\t      |||||");
+                        System.out.println("\t\t\t\t      ||||||");
+                        System.out.println("\t\t\t\t      ||||||");
+                        System.out.println("\t\t\t\t      |||||||");
+                        System.out.println("\t\t\t\t      |||||||");
+                        System.out.println("\t\t   ////\\\\\\\\   |||||||   ////\\\\\\\\   ////\\\\\\\\");
+                        System.out.println("\t\t   ||||||||   ||||||||  ||||||||   ||||||||");
+                        System.out.println("||||||\\\\   ||||||||   ||||||||  ||||||||   ||||||||");
+                        System.out.println("|||||\\\\\\\\  ||||||||   ||||||||  ||||||||   ||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("GAME OVER");
+                        System.exit(0);
+                    }
                 }
             }
         } while (gameActive);
