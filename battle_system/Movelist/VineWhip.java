@@ -3,20 +3,19 @@ package battle_system.Movelist;
 import battle_system.Characters.Fighter;
 import battle_system.TypeList;
 
-public class Regenerate extends Move {
-
-    public Regenerate() {
-        super("Regenerate",
-                TypeList.WATER,
-                Category.STATUS,
-                -50,
+public class VineWhip extends Move {
+    public VineWhip() {
+        super("VineWhip",
+                TypeList.GRASS,
+                Category.SPECIAL,
+                100,
                 100,
                 null);
     }
 
     @Override
     public void useMove(Fighter target) {
-        // Regain hp
+        // deal damage
     }
 
     @Override

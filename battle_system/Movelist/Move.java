@@ -57,6 +57,6 @@ public abstract class Move {
         System.out.println("Move: " + name);
     }
 
-    public abstract void useMove(Move move, Fighter target);
-    public abstract void useMove(Move move);
+    public abstract void useMove(Fighter target);
+    public abstract void useMove();
 }

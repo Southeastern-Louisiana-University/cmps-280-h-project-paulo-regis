@@ -7,7 +7,7 @@ import battle_system.TypeList;
 public class Dodge extends Move {
     public Dodge() {
         super("Dodge",
-                TypeList.NONE,
+                TypeList.NORMAL,
                 Category.STATUS,
                 0,
                 100,
@@ -15,12 +15,12 @@ public class Dodge extends Move {
     }
 
     @Override
-    public void useMove(Move move, Fighter target) {
+    public void useMove(Fighter target) {
         getInflicts().applyEffect(target);
     }
 
     @Override
-    public void useMove(Move move) {
-        getInflicts().applyEffect(getTarget());
+    public void useMove() {
+        useMove(getTarget());
     }
 }

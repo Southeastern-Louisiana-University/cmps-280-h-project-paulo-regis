@@ -1,11 +1,10 @@
 package battle_system.Movelist;
 
 import battle_system.Characters.Fighter;
-import battle_system.Statuses.Burning;
+import battle_system.Statuses.*;
 import battle_system.TypeList;
 
 public class ScorchingScratch extends Move {
-
     public ScorchingScratch() {
         super("Scorching Scratch",
                 TypeList.FIRE,
@@ -16,12 +15,13 @@ public class ScorchingScratch extends Move {
     }
 
     @Override
-    public void useMove(Move move, Fighter target) {
+    public void useMove(Fighter target) {
         // Deal damage
+        getInflicts().applyEffect(target);
     }
 
     @Override
-    public void useMove(Move move) {
-
+    public void useMove() {
+        getInflicts().applyEffect(getTarget());
     }
 }

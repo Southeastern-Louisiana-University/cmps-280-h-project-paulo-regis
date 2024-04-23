@@ -4,19 +4,19 @@ import battle_system.Characters.Fighter;
 import battle_system.Statuses.*;
 import battle_system.TypeList;
 
-public class Block extends Move {
-
-    public Block(String name) {
-        super(name,
-                TypeList.NORMAL,
-                Category.STATUS,
-                0,
+public class BlazingBreath extends Move {
+    public BlazingBreath() {
+        super("Blazing Breath",
+                TypeList.FIRE,
+                Category.SPECIAL,
                 100,
-                new Blocking()); // best boy block regens hp sometimes?
+                100,
+                new Burning());
     }
 
     @Override
     public void useMove(Fighter target) {
+        // Deal damage
         getInflicts().applyEffect(target);
     }
 

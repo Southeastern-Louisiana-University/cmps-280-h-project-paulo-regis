@@ -4,8 +4,7 @@ import battle_system.Movelist.*;
 import battle_system.TypeList;
 
 public class Bubbles extends Fighter {
-
-    public Bubbles() {
+    public Bubbles(Fighter boss) {
         super("Bubbles",
                 "Axolotl",
                 TypeList.WATER,
@@ -18,5 +17,6 @@ public class Bubbles extends Fighter {
                 new BubbleBazooka(),
                 new Regenerate(),
                 new Block("Block"));
+        setMoveTargets(boss, null, this, this);
     }
 }

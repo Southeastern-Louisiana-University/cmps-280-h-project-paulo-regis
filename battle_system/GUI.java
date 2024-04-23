@@ -8,13 +8,16 @@ public class GUI {
     private Fighter Bubbles;
     private Fighter Nova;
     private Fighter Pippin;
+    private Fighter PauloRegis;
 
     public GUI(Fighter Bubbles,
                Fighter Nova,
-               Fighter Pippin) {
+               Fighter Pippin,
+               Fighter PauloRegis) {
         this.Bubbles = Bubbles;
         this.Nova = Nova;
         this.Pippin = Pippin;
+        this.PauloRegis = PauloRegis;
     }
 
     private void generateLineBreak() {
@@ -63,6 +66,11 @@ public class GUI {
         generateLineBreak();
     }
 
+    public void generateSummaryBoss() {
+        Fighter pr = PauloRegis;
+        System.out.println(pr.getName() + " the " + pr.getAnimal() + ": " + pr.getHpCurrent() + "/" + pr.getHpMax());
+    }
+
 
     /*
      * [Name] the [Type] [Animal]: [hp]/[maxHp] hp
@@ -77,13 +85,6 @@ public class GUI {
      * >Options:
      * [1] Stats
      * [2] Moves
-     *
-     *
-     * Moves:
-     * [1] Scorching Scratch
-     * [2] [move2]
-     * [3] Dodge
-     * [4] Flee
      */
 
     /* TODO: (bossGUI)
@@ -94,21 +95,5 @@ public class GUI {
      * Nova the Fire Cat: [hp]/[maxHp] hp
      * Pippin the Fire Cat: [hp]/[maxHp] hp
      * Nova the Fire Cat: [hp]/[maxHp] hp
-     */
-
-    /* (character summary)
-     * [Name] the [Type] [Animal]: [hp]/[maxHp] hp
-     * -------------------------------------------
-     * > Stats:
-     * [0] HP : [hp]   [3] SPD: [spD]
-     * [1] ATK: [atk]  [4] SPA: [spA]
-     * [2] DEF: [def]  [5] SPE: [spe]
-     * -------------------------------------------
-     * > Moves:
-     * [1] [move1] (Power [p], Accuracy [a], Inflicts [i])
-     * [2] [move2] (Power [p], Accuracy [a], Inflicts [i])
-     * [3] [move3] (Power [p], Accuracy [a], Inflicts [i])
-     * [4] [move4] (Power [p], Accuracy [a], Inflicts [i])
-     * -------------------------------------------
      */
 }
