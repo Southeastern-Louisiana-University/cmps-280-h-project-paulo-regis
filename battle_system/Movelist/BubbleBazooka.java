@@ -15,12 +15,12 @@ public class BubbleBazooka extends Move {
     }
 
     @Override
-    public void useMove(Move move, Fighter target) {
+    public void useMove(Fighter target) {
         // deal damage
     }
 
     @Override
-    public void useMove(Move move) {
+    public void useMove() {
 
     }
 }

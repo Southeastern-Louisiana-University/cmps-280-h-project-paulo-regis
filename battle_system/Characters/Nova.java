@@ -4,19 +4,19 @@ import battle_system.Movelist.*;
 import battle_system.TypeList;
 
 public class Nova extends Fighter {
-    public Nova() {
+    public Nova(Fighter boss) {
         super("Nova",
                 "Kitten",
                 TypeList.FIRE,
                 125,
                 200, // high atk
-                50,
-                150,
                 100,
+                150,
+                50,
                 200, // high speed
                 new ScorchingScratch(),
-                null,
+                new BlazingBreath(),
                 new Dodge());
-        setMoveTargets(null, null, this, this); // TODO: find a way to target regis
+        setMoveTargets(boss, boss, this, this);
     }
 }

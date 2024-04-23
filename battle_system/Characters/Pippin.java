@@ -5,7 +5,7 @@ import battle_system.Movelist.*;
 
 public class Pippin extends Fighter {
 
-    public Pippin() {
+    public Pippin(Fighter boss) {
         super("Pippin",
                 "Good Boi (doggo)",
                 TypeList.GRASS,
@@ -15,8 +15,9 @@ public class Pippin extends Fighter {
                 0, // high spa
                 0, // high spd
                 0,
-                null,
-                null,
+                new VineWhip(),
+                new GoodBoiPuppyEyes(),
                 new Block("Best Boy Block"));
+        setMoveTargets(boss, boss, this, this);
     }
 }

@@ -1,18 +1,17 @@
 package battle_system.Movelist;
 
 import battle_system.Characters.Fighter;
-import battle_system.Statuses.*;
+import battle_system.Statuses.Infatuated;
 import battle_system.TypeList;
 
-public class Block extends Move {
-
-    public Block(String name) {
-        super(name,
+public class GoodBoiPuppyEyes extends Move {
+    public GoodBoiPuppyEyes() {
+        super("Good Boi Puppy Eyes",
                 TypeList.NORMAL,
                 Category.STATUS,
                 0,
                 100,
-                new Blocking()); // best boy block regens hp sometimes?
+                new Infatuated());
     }
 
     @Override

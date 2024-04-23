@@ -8,7 +8,7 @@ public class Flee extends Move {
 
     public Flee() {
         super("Flee",
-                TypeList.NONE,
+                TypeList.NORMAL,
                 Category.STATUS,
                 0,
                 0,
@@ -16,12 +16,12 @@ public class Flee extends Move {
     }
 
     @Override
-    public void useMove(Move move, Fighter target) {
+    public void useMove(Fighter target) {
         // haha funny?
     }
 
     @Override
-    public void useMove(Move move) {
+    public void useMove() {
 
     }
 }

@@ -188,7 +188,7 @@ public abstract class Fighter {
         Move.Category category = move.getCategory();
         int toHit = (int) Math.ceil(Math.random()*100);
         if (toHit > move.getAccuracy()) {
-            move.useMove(move, target);
+            move.useMove(target);
         } else {
             System.out.println("The move missed!");
         }

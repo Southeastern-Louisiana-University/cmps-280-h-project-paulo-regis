@@ -5,7 +5,6 @@ import battle_system.TypeList;
 
 public class PauloRegis extends Fighter {
 
-    //random type
     public PauloRegis() {
         super("Paulo Regis",
                 "Demigod of Eternal Winter",
@@ -16,9 +15,10 @@ public class PauloRegis extends Fighter {
                 0,
                 0,
                 0,
-                null,
-                null,
+                new RayOfFrost(),
+                new Freeze(),
                 new Block("Icy Shield"));
+        setMoveTargets(null, null, this, this);
     }
 
     public void dialogue() {

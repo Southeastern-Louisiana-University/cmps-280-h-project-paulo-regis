@@ -4,15 +4,15 @@ import battle_system.Characters.Fighter;
 import battle_system.Statuses.*;
 import battle_system.TypeList;
 
-public class Block extends Move {
+public class Freeze extends Move {
 
-    public Block(String name) {
-        super(name,
-                TypeList.NORMAL,
+    public Freeze() {
+        super("Freeze",
+                TypeList.ICE,
                 Category.STATUS,
-                0,
+                50,
                 100,
-                new Blocking()); // best boy block regens hp sometimes?
+                new Frozen());
     }
 
     @Override
