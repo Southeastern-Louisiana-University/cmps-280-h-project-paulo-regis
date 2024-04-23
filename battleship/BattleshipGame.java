@@ -5,12 +5,13 @@ package battleship;
 //  A faithful recreation of the Battleship board game,
 //  playable entirely within an IDE's output log.
 //
-//  Written by Wren Caillouet, 3/15/24 - 3/18/24
+//  Written by Wren Caillouet
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class BattleshipGame {
     static Scanner input = new Scanner(System.in);
 
     // QOL information trackers to display information to the player on their turn
@@ -18,6 +19,9 @@ public class Main {
     static String lastSquare;
     static boolean shipStruck;
     static boolean shipSank;
+
+    // These are the lengths of the 5 ship pieces that come with a physical battleship game.
+    private final static int[] pieces = {5, 4, 3, 3, 2};
 
     enum states {
         START,
@@ -27,12 +31,12 @@ public class Main {
         P2TURN,
         END
     }
-    public static void main(String[] args) {
+    public static void playBattleship() {
         states gameState = states.START;
         boolean gameActive = true;
 
         Player player1 = new Player();
-        Player player2 = new Player();
+        Player player2 = new Player("Dr. Paulo");
         Player winner = null;
 
         // Big ol' do-while loop. One iteration of this game loop should correspond to one in-game step or turn.
@@ -40,20 +44,10 @@ public class Main {
         do{
             switch (gameState){
                 case START -> {
-                    System.out.println("\t\tJAVA BATTLESHIP");
-                    System.out.println("\t Written by Wren");
-                    System.out.println();
-
                     String name;
-                    System.out.print("Enter a name for Player 1: ");
+                    System.out.print("Tell me your name... ");
                     name = input.nextLine().trim();
                     player1.setName(name);
-
-                    System.out.print("Enter a name for Player 2: ");
-                    name = input.nextLine().trim();
-                    player2.setName(name);
-                    System.out.println();
-
                     gameState = states.P1SETUP;
                 }
 
@@ -63,7 +57,7 @@ public class Main {
                 }
 
                 case P2SETUP -> {
-                    setupBoard(player2);
+                    automaticSetupBoard(player2);
                     gameState = states.P1TURN;
                 }
 
@@ -78,7 +72,7 @@ public class Main {
                 }
 
                 case P2TURN -> {
-                    takeTurn(player2, player1);
+                    automaticTakeTurn(player2, player1);
                     if(player1.checkLoss()){
                         winner = player2;
                         gameState = states.END;
@@ -88,22 +82,10 @@ public class Main {
                 }
 
                 case END -> {
-                    String str;
-
                     System.out.println("\n\n----------- GAME OVER -----------");
                     System.out.println(winner.getName() + " sunk all battleships and won!");
                     System.out.println();
                     System.out.println(player1.getBoard().generateGameOverView(player2.getBoard()));
-
-                    System.out.print("Rematch? ");
-                    str = input.nextLine().trim();
-                    if(str.toLowerCase().contains("y")){
-                        player1 = new Player(player1.getName());
-                        player2 = new Player(player2.getName());
-                        turnCount = 0;
-                        gameState = states.P1SETUP;
-                        continue;
-                    }
 
                     gameActive = false;
                 }
@@ -111,18 +93,40 @@ public class Main {
         } while (gameActive);
     }
 
+    private static void automaticSetupBoard(Player player) {
+        Board board = player.getBoard();
+
+        for (int piece : pieces) {
+            boolean horizontal;
+            String location;
+
+            do{
+                boolean locationUndecided = true;
+
+                // --------------- Decide orientation -----------------
+                int coinFlip = (int)(Math.random()*2);
+                horizontal = coinFlip < 1;
+
+                // --------------- Decide location -----------------
+                // Iterates until a valid input is made.
+                do{
+                    int x = (int)(Math.random() * 10);
+                    int y = (int)(Math.random() * 10);
+                    location = GamePiece.coordinateToString(x, y);
+
+                    if(board.isValidCoordinate(location)){
+                        locationUndecided = false;
+                    }
+                } while (locationUndecided);
+
+            } while (!board.addShip(piece, location, horizontal, false));
+        }
+    }
+
     // Should only be called once per player in the setup phases.
     // Takes a player object and walks a human player through the process of populating that player
     // object's board with ship pieces.
     private static void setupBoard(Player player) {
-        // These are the lengths of the 5 ship pieces that come with a physical battleship game.
-        int[] pieces = {5, 4, 3, 3, 2};
-
-        // Print a bunch of newlines so the player will not be able to see the previous player's actions.
-        for(int i = 0; i < 40; i++){
-            System.out.println();
-        }
-
         System.out.println(player.getName() + ", press enter to begin setting up your board.");
         input.nextLine();
 
@@ -187,7 +191,7 @@ public class Main {
                 System.out.println();
             } while (locationUndecided);
 
-        } while (!board.addShip(piece, location, horizontal));
+        } while (!board.addShip(piece, location, horizontal, true));
     }
 
     private static void takeTurn(Player player, Player opponent) {
@@ -197,26 +201,19 @@ public class Main {
         Board board = player.getBoard();
         Board opponentBoard = opponent.getBoard();
 
-        // Print a bunch of newlines so the player will not be able to see the previous player's actions.
-        for(int i = 0; i < 40; i++){
-            System.out.println();
-        }
-
-        // Hide the board until the intended player gives the OK
-        System.out.println(player.getName() + "'s turn!");
-        System.out.print("Press enter when ready.");
-        input.nextLine();
-
-        // Show the board
         System.out.println();
+        System.out.println("---------------------------");
+        System.out.println(player.getName() + "'s turn!");
+        System.out.println("---------------------------");
+        // Show the board
         System.out.println(board.generateView(opponentBoard));
 
-        // QOL feature: Display data about the last turn for the current player.
+        // Display data about the last turn for the current player.
         if(turnCount > 1){ // At least one turn needs to occur to be able to display data
-            System.out.println("Your opponent struck square " + lastSquare + ".");
-            System.out.println("It was a " + (shipStruck ? "hit." : "miss."));
+            System.out.println(opponent.getName() + " struck square " + lastSquare + ".");
+            System.out.println("It was a " + (shipStruck ? "hit" : "miss."));
             if(shipSank){
-                System.out.println("It sunk your battleship...");
+                System.out.println(opponent.getName() + "sunk your battleship...");
             }
         }
 
@@ -246,9 +243,53 @@ public class Main {
             }
         } while (targetUndecided);
 
-        // Show the results until the player gives the OK to hide them.
-        System.out.print("Press enter to end your turn.");
-        input.nextLine();
+        pause(750);
     }
 
+    private static void automaticTakeTurn(Player player, Player opponent) {
+        turnCount++;
+        String target;
+        Board opponentBoard = opponent.getBoard();
+
+        ArrayList<String> validTargets = opponentBoard.unhitSquares;
+        int randomInt;
+
+        System.out.println();
+        System.out.println("---------------------------");
+        System.out.println(player.getName() + "'s turn!");
+        System.out.println("---------------------------");
+
+        pause(1000);
+        randomInt = (int)(Math.random() * validTargets.size());
+        target = validTargets.get(randomInt);
+
+        System.out.println(player.getName() + " commands a strike at " + target + "!");
+        pause(1000);
+        if(opponentBoard.strikeBoard(target)){
+            // A successful strike was made on the board. Break out of the turn loop.
+            // Collect data about the square that was hit to display to the next player.
+            lastSquare = target.toUpperCase();
+            Cell c = opponentBoard.getCell(lastSquare);
+
+            shipStruck = false;
+            shipSank = false;
+
+            if(c.hasShip()){
+                shipStruck = true;
+                if(c.getShip().getSurvivingUnits() <= 0){
+                    shipSank = true;
+                }
+            }
+        }
+
+        pause(1000);
+    }
+
+    private static void pause(int millis){
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            System.out.println("You shouldn't be seeing this - pause() failed in class BattleshipGame");
+        }
+    }
 }

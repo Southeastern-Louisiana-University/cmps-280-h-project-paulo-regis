@@ -6,7 +6,8 @@ public class Board extends GamePiece {
     // A board's grid's rows should be labeled as LETTERS
     // Its columns should be labeled as NUMBERS
     Cell[][] grid;
-    ArrayList<Ship> ships = new ArrayList<>();
+    final ArrayList<Ship> ships = new ArrayList<>();
+    final ArrayList<String> unhitSquares = new ArrayList<>();
 
     public Board(){
         grid = new Cell[10][10];
@@ -14,12 +15,13 @@ public class Board extends GamePiece {
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[i].length; j++){
                 grid[i][j] = new Cell(i, j);
+                unhitSquares.add(GamePiece.coordinateToString(i, j));
             }
         }
     }
 
     // Returns true if the action was successful; returns false otherwise
-    public boolean addShip( int length, String location, boolean horizontal){
+    public boolean addShip( int length, String location, boolean horizontal, boolean feedback){
         // Check if location input is a valid coordinate
         int[] coord = parseLocation(location);
         if(isInvalidCoordinate(coord)){
@@ -27,7 +29,9 @@ public class Board extends GamePiece {
         } else {
             assert coord != null;
             if (coord[0] + (length * booleanToInt(!horizontal)) > grid.length || coord[1] + (length * booleanToInt(horizontal)) > grid[0].length){
-                System.out.println("The ship will extend past the boundaries of the board.");
+                if(feedback) {
+                    System.out.println("The ship will extend past the boundaries of the board.");
+                }
                 return false;
             }
         }
@@ -37,7 +41,9 @@ public class Board extends GamePiece {
         for(int i = 0; i < length; i++){
             Cell cell = grid[coord[0] + (i * booleanToInt(!horizontal))][coord[1] + (i * booleanToInt(horizontal))];
             if(cell.hasShip()){
-                System.out.println("Coordinate " + location + " is already occupied by a ship!");
+                if(feedback) {
+                    System.out.println("Coordinate " + location + " is already occupied by a ship!");
+                }
                 return false;
             }
         }
@@ -72,6 +78,7 @@ public class Board extends GamePiece {
                     System.out.println("A battleship sank!");
                 }
             }
+            unhitSquares.remove(location);
             return true;
         }
         return false;

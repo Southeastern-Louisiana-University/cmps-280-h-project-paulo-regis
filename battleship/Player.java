@@ -25,7 +25,7 @@ public class Player {
         return board;
     }
 
-    public boolean checkLoss(){
+    public boolean checkLoss() {
         // A player loses if their board contains no surviving ship units.
         return (board.shipUnitsRemaining() <= 0);
     }
