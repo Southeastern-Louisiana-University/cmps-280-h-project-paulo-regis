@@ -20,8 +20,15 @@ public class GUI {
         this.PauloRegis = PauloRegis;
     }
 
+    public void clearGUI() {
+        // how????
+    }
+
     private void generateLineBreak() {
         System.out.println("----------------------------------------------------");
+    }
+    private void newLine() {
+        System.out.println();
     }
 
     public void generateName(Fighter c) {
@@ -35,7 +42,7 @@ public class GUI {
             Move move = moveset[i];
             System.out.print("["+(i+1)+"] "+move.getName()+" (Power " + move.getPower() + ", Accuracy " + move.getAccuracy());
             if (move.getInflicts() != null) {
-                System.out.print(", Inflicts " + move.getInflicts().getName());
+                System.out.print(", Inflicts \"" + move.getInflicts().getName() + "\"");
             } System.out.println(")");
         }
     }
@@ -56,6 +63,7 @@ public class GUI {
         generateLineBreak();
         generateMoves(c);
         generateLineBreak();
+        newLine();
     }
 
     public void generateCharacterList() {
@@ -64,11 +72,15 @@ public class GUI {
         generateName(Nova);
         generateName(Pippin);
         generateLineBreak();
+        newLine();
     }
 
     public void generateSummaryBoss() {
         Fighter pr = PauloRegis;
+        generateLineBreak();
         System.out.println(pr.getName() + " the " + pr.getAnimal() + ": " + pr.getHpCurrent() + "/" + pr.getHpMax());
+        generateLineBreak();
+        newLine();
     }
 
 
