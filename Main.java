@@ -14,6 +14,38 @@ public class Main {
 
         BattleshipGame.playBattleship();
 
+        //paulomon battle here
+
+        Trivia test = new Trivia();
+
+        pause();
+
+        //dialogue for winning the paulomon battle
+
+        if (!test.firstQuestion()) {
+            //dialogue for getting a question wrong
+            gameOver();
+        }
+        //dialogue for first question right
+
+        if (!test.secondQuestion()) {
+            //question wrong
+            gameOver();
+        }
+        //dialogue for secondQ correct
+
+        if (!test.thirdQuestion()) {
+            //etc.
+            gameOver();
+        }
+
+        if (!test.fourthQuestion()) {
+            //etc.
+            gameOver();
+        }
+
+        //dialogue for winning the game
+        System.exit(0);
     }
 
     public static void pause() {

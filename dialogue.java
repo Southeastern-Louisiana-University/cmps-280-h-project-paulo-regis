@@ -52,9 +52,7 @@ public class dialogue {
             case 20:
                 text = "Pippin tucks his head under your arm and points at the top of Dr. Regis' head. ";
             case 21:
-                text = "You notice a gold crown with 3 big red gems on the front. It's the Ice King's crown! " +
-                        "Dr. Regis is consumed under the psychosis of the crown. " +
-                        "He freezes the surrounding area. There's no escape! " +
+                text = "Dr. Regis freezes the surrounding area. There's no escape! " +
                         "You and your Paulo-mon must fight to survive. ";
             case 22:
                 text = "Your Paulo-mon lunges in front of you to protect you. " +
@@ -106,7 +104,7 @@ public class dialogue {
 // Showcase pocket watch that is stuck on a specific time when you look at it.
 // Whenever you get to the next stage then it'll set to that time for you to jump back to.
 // You won't know it's for time travel until you've been defeated.
-// When you jump back you feel weaker or faint. Maybe yo look pale or the pocket watch looks different.
+// When you jump back you feel weaker or faint. Maybe you look pale or the pocket watch looks different.
         return text;
     }
 }
