@@ -5,7 +5,7 @@ import battle_system.Characters.Fighter;
 public class CantFlee extends Status {
     static int damageToDoor = 0;
     public CantFlee() {
-        super("You can't flee from a trainer battle!",
+        super("Trying To Run",
                 1,
                 1);
     }
