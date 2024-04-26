@@ -15,15 +15,15 @@ public class BattleEngine {
     public static void main(String[] args) {
 
 //        _GUI.generateSummaryBoss();
-        _GUI.generateSummary(_Bubbles);
-        _GUI.generateSummary(_Nova);
-        _GUI.generateSummary(_Pippin);
+//        _GUI.generateSummary(_Bubbles);
+//        _GUI.generateSummary(_Nova);
+//        _GUI.generateSummary(_Pippin);
 
 //        _GUI.generateName(_PauloRegis);
 //        _GUI.generateStats(_PauloRegis);
 //        _GUI.generateMoves(_PauloRegis);
 
-        _GUI.generateSummary(_PauloRegis);
+//        _GUI.generateSummary(_PauloRegis);
 
 
 //        _GUI.generateCharacterList();
@@ -31,17 +31,21 @@ public class BattleEngine {
 
 
         // Stage 0: Declare a new round and do pre-round things
-        _TurnSystem.createTurnOrder();
-        _GUI.generateTurnOrder();
 
         // Stage 1.1: Declare a fighter's turn
         // Stage 1.2: Choose that fighter's moves
 //        _GUI.chooseAction(_Nova);
         // Stage 1.3: Move to the next fighter's turn
+        _GUI.chooseActionsAll();
+//        _GUI.generateActionList();
 
 
         // Stage 2: Decide turn order
+        _TurnSystem.createTurnOrder();
+//        _GUI.generateTurnOrder();
         // Stage 3: Execute round
+
+
         // Stage 4: End round
     }
 }

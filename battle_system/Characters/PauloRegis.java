@@ -11,10 +11,10 @@ public class PauloRegis extends Fighter {
                 TypeList.ICE,
                 TypeList.ROCK,
                 300,
-                0,
-                200,
-                0, // High def
-                0,
+                50,
+                200,  // High def
+                125,
+                100,
                 100,
                 new RayOfFrost(),
                 new Freeze(),

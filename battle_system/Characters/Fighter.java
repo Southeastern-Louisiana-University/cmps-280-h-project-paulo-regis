@@ -5,7 +5,7 @@ import battle_system.Movelist.*;
 
 import java.lang.reflect.Type;
 
-public abstract class Fighter {
+public abstract class Fighter implements Comparable<Fighter> {
 
     private String name;
     private String animal;
@@ -206,5 +206,11 @@ public abstract class Fighter {
     @Override
     public String toString() {
         return getName();
+    }
+
+    @Override
+    public int compareTo(Fighter o) {
+        if (o.getName() == name) {return 0;}
+        else {return -1;}
     }
 }

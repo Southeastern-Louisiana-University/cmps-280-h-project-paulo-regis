@@ -17,6 +17,8 @@ public class GUI {
     private Fighter fighter3;
     private Fighter boss;
 
+    private Fighter[] playerList = new Fighter[3];
+
     public GUI(TurnSystem turnSystem,
                Fighter fighter1,
                Fighter fighter2,
@@ -27,6 +29,10 @@ public class GUI {
         this.fighter2 = fighter2;
         this.fighter3 = fighter3;
         this.boss = boss;
+
+        playerList[0] = fighter1;
+        playerList[1] = fighter2;
+        playerList[2] = fighter3;
     }
 
     public void clearGUI() {
@@ -112,9 +118,10 @@ public class GUI {
                 option = input.nextInt();
             }
             switch (option) {
-                case -1: // TODO: Remove this after done testing
-                    System.out.println("Quitting Program...");
-                    break;
+//                case -1: // TODONE: Remove this after done testing
+//                    System.out.println("Going to previous fighter...");
+////                    return 1;
+//                    break;
                 case 0:
                     System.out.println("Generating Stats...");
                     generateLineBreak();
@@ -136,7 +143,7 @@ public class GUI {
                     generateActions();
                     validOption = false;
             }
-        } while (option != 1 && option != -1);
+        } while (option != 1/* && option != -1*/);
 //        System.out.println("Option " + option + " chosen!");
     }
 
@@ -162,13 +169,27 @@ public class GUI {
                 case 3:
                     validOption = true;
                     System.out.println("Using move #" + option + "...");
-                    // TODO: Use move
+                    turnSystem.decideAction(c, c.getMove(option));
                     break;
                 default:
                     System.out.println("That's not a valid parameter!");
                     validOption = false;
             }
         } while (option < -1 || option > 3);
+    }
+
+    public void chooseActionsAll() { // TODO: Allow going back to previous fighters
+        for (int i = 0; i < playerList.length; i++) {
+            chooseAction(playerList[i]);
+        }
+    }
+
+    public void generateActionList() {
+        System.out.println("> Actions List:");
+        Move[] actionList = turnSystem.getActionList();
+        for (int i = 0; i < playerList.length; i++) {
+            System.out.println("["+i+"] "+playerList[i].getName()+": "+actionList[i].getName());
+        }
     }
 
     public void generateTurnOrder() {

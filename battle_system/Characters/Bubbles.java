@@ -9,11 +9,11 @@ public class Bubbles extends Fighter {
                 "Axolotl",
                 TypeList.WATER,
                 TypeList.FIRE,
-                0, // tanky
-                0,
-                0, // tanky
-                0,
-                0,
+                250, // tanky
+                50,
+                200, // tanky
+                100,
+                175,
                 50,
                 new BubbleBazooka(),
                 new Regenerate(),

@@ -59,4 +59,18 @@ public abstract class Move {
 
     public abstract void useMove(Fighter target);
     public abstract void useMove();
+
+    @Override
+    public String toString() {
+        return name;
+//        return "Move{" +
+//                "name='" + name + '\'' +
+//                ", type=" + type +
+//                ", category=" + category +
+//                ", power=" + power +
+//                ", accuracy=" + accuracy +
+//                ", inflicts=" + inflicts +
+//                ", target=" + target +
+//                '}';
+    }
 }
