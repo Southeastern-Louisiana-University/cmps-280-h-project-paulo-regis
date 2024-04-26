@@ -15,7 +15,7 @@ public class PauloRegis extends Fighter {
                 200,
                 0, // High def
                 0,
-                0,
+                100,
                 new RayOfFrost(),
                 new Freeze(),
                 new Block("Icy Shield"));

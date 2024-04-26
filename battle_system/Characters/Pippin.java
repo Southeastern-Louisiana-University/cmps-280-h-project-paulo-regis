@@ -15,7 +15,7 @@ public class Pippin extends Fighter {
                 0,
                 0, // high spa
                 0, // high spd
-                0,
+                150,
                 new VineWhip(),
                 new GoodBoiPuppyEyes(),
                 new Block("Best Boy Block"));

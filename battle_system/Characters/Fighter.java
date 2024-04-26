@@ -97,6 +97,7 @@ public abstract class Fighter {
         statsBase[3] = baseSpA;
         statsBase[4] = baseSpD;
         statsBase[5] = baseSpe;
+        updateStats();
     }
 
     // TODO: Add documentation to help remember what index goes to what stat
@@ -200,5 +201,10 @@ public abstract class Fighter {
 
     public void useMove(int moveIndex, Fighter target) {
         useMove(getMove(moveIndex), target);
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

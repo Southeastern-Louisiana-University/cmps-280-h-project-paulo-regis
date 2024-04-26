@@ -14,7 +14,7 @@ public class Bubbles extends Fighter {
                 0, // tanky
                 0,
                 0,
-                0,
+                50,
                 new BubbleBazooka(),
                 new Regenerate(),
                 new Block("Block"));

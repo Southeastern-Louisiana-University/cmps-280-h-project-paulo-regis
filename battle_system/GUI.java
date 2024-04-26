@@ -3,25 +3,30 @@ package battle_system;
 import battle_system.Characters.Fighter;
 import battle_system.Movelist.Move;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GUI {
 
     private Scanner input = new Scanner(System.in);
 
-    private Fighter _Bubbles;
-    private Fighter _Nova;
-    private Fighter _Pippin;
-    private Fighter _PauloRegis;
+    private TurnSystem turnSystem;
 
-    public GUI(Fighter Bubbles,
-               Fighter Nova,
-               Fighter Pippin,
-               Fighter PauloRegis) {
-        this._Bubbles = Bubbles;
-        this._Nova = Nova;
-        this._Pippin = Pippin;
-        this._PauloRegis = PauloRegis;
+    private Fighter fighter1;
+    private Fighter fighter2;
+    private Fighter fighter3;
+    private Fighter boss;
+
+    public GUI(TurnSystem turnSystem,
+               Fighter fighter1,
+               Fighter fighter2,
+               Fighter fighter3,
+               Fighter boss) {
+        this.turnSystem = turnSystem;
+        this.fighter1 = fighter1;
+        this.fighter2 = fighter2;
+        this.fighter3 = fighter3;
+        this.boss = boss;
     }
 
     public void clearGUI() {
@@ -72,17 +77,17 @@ public class GUI {
 
     public void generateCharacterList() {
         generateLineBreak();
-        generateName(_Bubbles);
-        generateName(_Nova);
-        generateName(_Pippin);
+        generateName(fighter1);
+        generateName(fighter2);
+        generateName(fighter3);
         generateLineBreak();
         newLine();
     }
 
     public void generateSummaryBoss() {
-        Fighter pr = _PauloRegis;
+        Fighter b = boss;
         generateLineBreak();
-        System.out.println(pr.getName() + " the " + pr.getAnimal() + ": " + pr.getHpCurrent() + "/" + pr.getHpMax());
+        System.out.println(b.getName() + " the " + b.getAnimal() + ": " + b.getHpCurrent() + "/" + b.getHpMax());
         generateLineBreak();
         newLine();
     }
@@ -164,5 +169,14 @@ public class GUI {
                     validOption = false;
             }
         } while (option < -1 || option > 3);
+    }
+
+    public void generateTurnOrder() {
+        System.out.println("> Turn Order:");
+        ArrayList<Fighter> turnOrder = turnSystem.getTurnOrder();
+        for (int i = 0; i < turnOrder.size(); i++) {
+                System.out.println("["+i+"] "+turnOrder.get(i).getName());
+        }
+
     }
 }
