@@ -10,8 +10,8 @@ public class Freeze extends Move {
         super("Freeze",
                 TypeList.ICE,
                 Category.STATUS,
+                25,
                 50,
-                100,
                 new Frozen());
     }
 

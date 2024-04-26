@@ -9,6 +9,7 @@ public class Pippin extends Fighter {
         super("Pippin",
                 "Good Boi (doggo)",
                 TypeList.GRASS,
+                TypeList.WATER,
                 0,
                 0,
                 0,

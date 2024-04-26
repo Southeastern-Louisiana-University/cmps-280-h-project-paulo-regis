@@ -3,11 +3,14 @@ package battle_system.Characters;
 import battle_system.TypeList;
 import battle_system.Movelist.*;
 
+import java.lang.reflect.Type;
+
 public abstract class Fighter {
 
     private String name;
     private String animal;
     private TypeList type;
+    private TypeList resistance;
 
     // Base stats
 //    private int baseHp;  // Endurance
@@ -48,6 +51,7 @@ public abstract class Fighter {
     Fighter(String name,
             String animal,
             TypeList type,
+            TypeList resistance,
             // Stats
             int baseHp,
             int baseAtk,
@@ -56,9 +60,9 @@ public abstract class Fighter {
             int baseSpD,
             int baseSpe,
             // Moves
+            Move move0,
             Move move1,
-            Move move2,
-            Move move3) {
+            Move move2) {
         this.name = name;
         this.animal = animal;
         this.type = type;
@@ -68,9 +72,9 @@ public abstract class Fighter {
                 baseSpA,
                 baseSpD,
                 baseSpe);
-        this.moveset[0] = move1; // Offensive Move
-        this.moveset[1] = move2; // Defensive Move
-        this.moveset[2] = move3; // Dodge/Block
+        this.moveset[0] = move0; // Offensive Move
+        this.moveset[1] = move1; // Defensive Move
+        this.moveset[2] = move2; // Dodge/Block
         this.moveset[3] = new Flee();
     }
 
@@ -172,8 +176,8 @@ public abstract class Fighter {
     public int getHpMax() {return getStatsActualSingle(0);}
     public Move[] getMoveset() {return moveset;}
     public Move getMove(int index) {
-        if (verifyChoice(index, 1, 4, "getting a move")) {
-            return moveset[index-1];
+        if (verifyChoice(index, 0, 3, "getting a move")) {
+            return moveset[index];
         } else {return null;}
     }
 
@@ -192,5 +196,9 @@ public abstract class Fighter {
         } else {
             System.out.println("The move missed!");
         }
+    }
+
+    public void useMove(int moveIndex, Fighter target) {
+        useMove(getMove(moveIndex), target);
     }
 }

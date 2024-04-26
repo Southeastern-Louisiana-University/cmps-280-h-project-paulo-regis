@@ -8,6 +8,7 @@ public class Bubbles extends Fighter {
         super("Bubbles",
                 "Axolotl",
                 TypeList.WATER,
+                TypeList.FIRE,
                 0, // tanky
                 0,
                 0, // tanky

@@ -8,6 +8,7 @@ public class Nova extends Fighter {
         super("Nova",
                 "Kitten",
                 TypeList.FIRE,
+                TypeList.ICE,
                 125,
                 200, // high atk
                 100,
@@ -18,5 +19,6 @@ public class Nova extends Fighter {
                 new BlazingBreath(),
                 new Dodge());
         setMoveTargets(boss, boss, this, this);
+        // TODO: Resistance to Freeze?
     }
 }

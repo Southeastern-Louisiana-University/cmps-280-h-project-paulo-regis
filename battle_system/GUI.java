@@ -3,21 +3,25 @@ package battle_system;
 import battle_system.Characters.Fighter;
 import battle_system.Movelist.Move;
 
+import java.util.Scanner;
+
 public class GUI {
 
-    private Fighter Bubbles;
-    private Fighter Nova;
-    private Fighter Pippin;
-    private Fighter PauloRegis;
+    private Scanner input = new Scanner(System.in);
+
+    private Fighter _Bubbles;
+    private Fighter _Nova;
+    private Fighter _Pippin;
+    private Fighter _PauloRegis;
 
     public GUI(Fighter Bubbles,
                Fighter Nova,
                Fighter Pippin,
                Fighter PauloRegis) {
-        this.Bubbles = Bubbles;
-        this.Nova = Nova;
-        this.Pippin = Pippin;
-        this.PauloRegis = PauloRegis;
+        this._Bubbles = Bubbles;
+        this._Nova = Nova;
+        this._Pippin = Pippin;
+        this._PauloRegis = PauloRegis;
     }
 
     public void clearGUI() {
@@ -40,7 +44,7 @@ public class GUI {
         System.out.println("> Moves:");
         for (int i = 0; i < moveset.length; i++) {
             Move move = moveset[i];
-            System.out.print("["+(i+1)+"] "+move.getName()+" (Power " + move.getPower() + ", Accuracy " + move.getAccuracy());
+            System.out.print("["+(i)+"] "+move.getName()+" (Power " + move.getPower() + ", Accuracy " + move.getAccuracy());
             if (move.getInflicts() != null) {
                 System.out.print(", Inflicts \"" + move.getInflicts().getName() + "\"");
             } System.out.println(")");
@@ -68,44 +72,97 @@ public class GUI {
 
     public void generateCharacterList() {
         generateLineBreak();
-        generateName(Bubbles);
-        generateName(Nova);
-        generateName(Pippin);
+        generateName(_Bubbles);
+        generateName(_Nova);
+        generateName(_Pippin);
         generateLineBreak();
         newLine();
     }
 
     public void generateSummaryBoss() {
-        Fighter pr = PauloRegis;
+        Fighter pr = _PauloRegis;
         generateLineBreak();
         System.out.println(pr.getName() + " the " + pr.getAnimal() + ": " + pr.getHpCurrent() + "/" + pr.getHpMax());
         generateLineBreak();
         newLine();
     }
 
+    public void generateActions() {
+        System.out.println("> Actions");
+        System.out.println("[0] See Stats");
+        System.out.println("[1] Moves");
+    }
 
-    /*
-     * [Name] the [Type] [Animal]: [hp]/[maxHp] hp
-     * Moves:
-     * [1] [move1]
-     * [2] [move2]
-     * [3] [move3]
-     * [4] [move4]
-     */
-    /*
-     * Nova the Fire Cat: 43/100 hp
-     * >Options:
-     * [1] Stats
-     * [2] Moves
-     */
+    public void chooseAction(Fighter c) {
+        generateLineBreak();
+        generateName(c);
+        generateActions();
+        boolean validOption = true;
+        System.out.print("\nChoose an action: ");
+        int option = input.nextInt();
 
-    /* TODO: (bossGUI)
-     * Paulo Regis the Demigod of Eternal Winter: hp/maxHp
-     */
+        do {
+            if (!validOption) {
+                System.out.print("\nChoose an action: ");
+                option = input.nextInt();
+            }
+            switch (option) {
+                case -1: // TODO: Remove this after done testing
+                    System.out.println("Quitting Program...");
+                    break;
+                case 0:
+                    System.out.println("Generating Stats...");
+                    generateLineBreak();
+                    generateName(c);
+                    generateStats(c);
+                    generateLineBreak();
+                    generateActions();
+                    validOption = false;
+                    break;
+                case 1:
+                    System.out.println("Generating Moves...");
+                    chooseMove(c);
+                    validOption = true;
+                    break;
+                default:
+                    System.out.println("That's not a valid parameter!");
+                    generateLineBreak();
+                    generateName(c);
+                    generateActions();
+                    validOption = false;
+            }
+        } while (option != 1 && option != -1);
+//        System.out.println("Option " + option + " chosen!");
+    }
 
-    /* (characterList)
-     * Nova the Fire Cat: [hp]/[maxHp] hp
-     * Pippin the Fire Cat: [hp]/[maxHp] hp
-     * Nova the Fire Cat: [hp]/[maxHp] hp
-     */
+    public void chooseMove(Fighter c) {
+        generateMoves(c);
+        boolean validOption = true;
+        System.out.print("\nChoose a move: ");
+        int option = input.nextInt();
+        do {
+            if (!validOption) {
+                System.out.print("\nChoose a move: ");
+                option = input.nextInt();
+            }
+            switch (option) {
+                case -1:
+                    System.out.println("Exiting...");
+                    validOption = true;
+                    chooseAction(c);
+                    break;
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    validOption = true;
+                    System.out.println("Using move #" + option + "...");
+                    // TODO: Use move
+                    break;
+                default:
+                    System.out.println("That's not a valid parameter!");
+                    validOption = false;
+            }
+        } while (option < -1 || option > 3);
+    }
 }

@@ -28,6 +28,9 @@ public class BattleEngine {
 //        _GUI.generateCharacterList();
 
         // Stage 1: Choose moves
+        _GUI.chooseAction(_Nova);
+
+
         // Stage 2: Decide turn order
         // Stage 3: Execute round
         // Stage 4: End round
