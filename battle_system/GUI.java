@@ -123,7 +123,7 @@ public class GUI {
 ////                    return 1;
 //                    break;
                 case 0:
-                    System.out.println("Generating Stats...");
+//                    System.out.println("Generating Stats...");
                     generateLineBreak();
                     generateName(c);
                     generateStats(c);
@@ -132,7 +132,7 @@ public class GUI {
                     validOption = false;
                     break;
                 case 1:
-                    System.out.println("Generating Moves...");
+//                    System.out.println("Generating Moves...");
                     chooseMove(c);
                     validOption = true;
                     break;
@@ -159,7 +159,7 @@ public class GUI {
             }
             switch (option) {
                 case -1:
-                    System.out.println("Exiting...");
+//                    System.out.println("Exiting...");
                     validOption = true;
                     chooseAction(c);
                     break;
@@ -168,7 +168,7 @@ public class GUI {
                 case 2:
                 case 3:
                     validOption = true;
-                    System.out.println("Using move #" + option + "...");
+//                    System.out.println("Using move #" + option + "...");
                     turnSystem.decideAction(c, c.getMove(option));
                     break;
                 default:
@@ -178,10 +178,30 @@ public class GUI {
         } while (option < -1 || option > 3);
     }
 
+    public void chooseMoveBoss() {
+        int multiplier = 2;
+        if (0.333 > ((double) boss.getHpCurrent())/boss.getHpMax()) {
+            multiplier = 3;
+        }
+        int rng = (int) (Math.floor(Math.random()*multiplier));
+        switch(rng) {
+            case 0: // Ray of Frost
+                int target = (int) (Math.floor(Math.random()*3));
+                boss.getMove(rng).setTarget(playerList[target]);
+                break;
+            case 1: // Freeze
+                break;
+            case 2: // Block
+                break;
+        }
+
+        turnSystem.decideAction(boss, boss.getMove(rng));
+    }
+
     public void chooseActionsAll() { // TODO: Allow going back to previous fighters
         for (int i = 0; i < playerList.length; i++) {
             chooseAction(playerList[i]);
-        }
+        } chooseMoveBoss();
     }
 
     public void generateActionList() {

@@ -13,14 +13,4 @@ public class GoodBoiPuppyEyes extends Move {
                 100,
                 new Infatuated());
     }
-
-    @Override
-    public void useMove(Fighter target) {
-        getInflicts().applyEffect(target);
-    }
-
-    @Override
-    public void useMove() {
-        getInflicts().applyEffect(getTarget());
-    }
 }

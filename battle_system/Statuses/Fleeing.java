@@ -1,10 +1,13 @@
 package battle_system.Statuses;
 
 import battle_system.Characters.Fighter;
+import battle_system.Characters.Sourceless;
+import battle_system.Movelist.Move;
+import battle_system.TypeList;
 
-public class CantFlee extends Status {
+public class Fleeing extends Status {
     static int damageToDoor = 0;
-    public CantFlee() {
+    public Fleeing() {
         super("Trying To Run",
                 1,
                 1);
@@ -12,7 +15,7 @@ public class CantFlee extends Status {
 
     @Override
     public void applyEffect(Fighter target) {
-        target.takeDamage(getDamageOverTime());
+        target.takeDamage(new Sourceless(), getDamageOverTime(), TypeList.NORMAL, Move.Category.STATUS);
         System.out.print(target.getName() + " slams their head on an icy wall as they try to flee, taking " + getDamageOverTime() + " damage. ");
         damageToDoor++;
 

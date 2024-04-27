@@ -57,8 +57,25 @@ public abstract class Move {
         System.out.println("Move: " + name);
     }
 
-    public abstract void useMove(Fighter target);
-    public abstract void useMove();
+    public void useMove(Fighter attacker, Fighter target) {
+        if (category == Category.STATUS) {
+            getInflicts().applyEffect(target);
+        } else if (category == Category.PHYSICAL || category == Category.SPECIAL) {
+            target.takeDamage(attacker, getPower(), getType(), getCategory());
+        } else {
+            System.out.println("Invalid status: not sure what to do with this move!");
+        }
+    }
+
+    public void useMove(Fighter attacker) {
+        useMove(attacker, getTarget());
+    }
+
+    public void useMove(Fighter attacker, Fighter[] targetList) {
+        for (Fighter target : targetList) {
+            useMove(attacker, target);
+        }
+    }
 
     @Override
     public String toString() {

@@ -14,14 +14,4 @@ public class Block extends Move {
                 100,
                 new Blocking()); // best boy block regens hp sometimes?
     }
-
-    @Override
-    public void useMove(Fighter target) {
-        getInflicts().applyEffect(target);
-    }
-
-    @Override
-    public void useMove() {
-        getInflicts().applyEffect(getTarget());
-    }
 }

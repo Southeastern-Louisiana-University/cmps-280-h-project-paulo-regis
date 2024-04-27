@@ -43,8 +43,9 @@ public class BattleEngine {
         // Stage 2: Decide turn order
         _TurnSystem.createTurnOrder();
 //        _GUI.generateTurnOrder();
-        // Stage 3: Execute round
 
+        // Stage 3: Execute round
+        _TurnSystem.executeRound();
 
         // Stage 4: End round
     }

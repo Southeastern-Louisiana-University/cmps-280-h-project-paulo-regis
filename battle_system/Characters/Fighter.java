@@ -3,8 +3,6 @@ package battle_system.Characters;
 import battle_system.TypeList;
 import battle_system.Movelist.*;
 
-import java.lang.reflect.Type;
-
 public abstract class Fighter implements Comparable<Fighter> {
 
     private String name;
@@ -130,18 +128,37 @@ public abstract class Fighter implements Comparable<Fighter> {
         if (hpCurrent > getHpMax()) {
             hpCurrent = getHpMax();
         } else if (hpCurrent < 0) {
+            System.out.println(name + " has fainted and can no longer fight!");
             hpCurrent = 0;
         }
     }
 
     public void modifyHp(int hp) {
+        if (hpCurrent <= 0) {System.out.println(name + " has been revived!");}
         hpCurrent += hp;
         verifyHp();
     }
 
-    public void takeDamage(int damage) {
-        hpCurrent -= damage;
+    public void takeDamage(Fighter source, int damage, TypeList type, Move.Category category) {
+        int divider = 1;
+        int attack = 0;
+        int defense = 0;
+
+        if (type == getType()) {divider *= 2;}
+        if (category == Move.Category.PHYSICAL) {
+            attack = source.getStatsActualSingle(2);
+            defense = getStatsActualSingle(3);
+        } else if (category == Move.Category.SPECIAL) {
+            attack = source.getStatsActualSingle(4);
+            defense = getStatsActualSingle(5);
+        }
+
+        damage += attack/5;
+        damage -= defense/5;
+        System.out.print(name + " takes " + damage + " damage!");
+        hpCurrent -= damage/divider;
         verifyHp();
+        System.out.println(" (" + getHpCurrent() + "/" + getHpMax() + ")");
     }
 
     public void setMove(int index, Move move) {
@@ -190,17 +207,36 @@ public abstract class Fighter implements Comparable<Fighter> {
     }
 
     public void useMove(Move move, Fighter target) {
+        System.out.println(name + " uses " + move.getName() + " on " + target + "!");
         Move.Category category = move.getCategory();
         int toHit = (int) Math.ceil(Math.random()*100);
-        if (toHit > move.getAccuracy()) {
-            move.useMove(target);
+
+        if (category != Move.Category.STATUS) {
+            if (toHit < (move.getAccuracy() - (target.getStatsActualSingle(5) / 5))) { // tohit < (accuracy - (speed / 5))
+                move.useMove(this, target);
+            } else {
+                System.out.println(name + "'s move missed!");
+            }
         } else {
-            System.out.println("The move missed!");
+            move.useMove(this, target);
         }
+    }
+
+    public void useMove(Move move) {
+        useMove(move, move.getTarget());
     }
 
     public void useMove(int moveIndex, Fighter target) {
         useMove(getMove(moveIndex), target);
+    }
+
+    public void useMove(int moveIndex) {
+        useMove(moveIndex, getMove(moveIndex).getTarget());
+    }
+
+    public void useMoveAoE(Move move, Fighter[] targetList) {
+        System.out.println(name + " uses " + move.getName() + " on everyone!!");
+        move.useMove(this, targetList);
     }
 
     @Override

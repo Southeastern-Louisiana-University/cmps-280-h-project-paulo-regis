@@ -15,13 +15,8 @@ public class ScorchingScratch extends Move {
     }
 
     @Override
-    public void useMove(Fighter target) {
-        // Deal damage
+    public void useMove(Fighter attacker, Fighter target) {
+        target.takeDamage(attacker, getPower(), getType(), getCategory());
         getInflicts().applyEffect(target);
-    }
-
-    @Override
-    public void useMove() {
-        getInflicts().applyEffect(getTarget());
     }
 }

@@ -12,15 +12,4 @@ public class RayOfFrost extends Move {
                 100,
                 null);
     }
-
-
-    @Override
-    public void useMove(Fighter target) {
-        // deal damage
-    }
-
-    @Override
-    public void useMove() {
-
-    }
 }

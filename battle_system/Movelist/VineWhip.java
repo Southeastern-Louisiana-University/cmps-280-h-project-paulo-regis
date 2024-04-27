@@ -5,21 +5,11 @@ import battle_system.TypeList;
 
 public class VineWhip extends Move {
     public VineWhip() {
-        super("VineWhip",
+        super("Vine Whip",
                 TypeList.GRASS,
                 Category.SPECIAL,
                 100,
                 100,
                 null);
-    }
-
-    @Override
-    public void useMove(Fighter target) {
-        // deal damage
-    }
-
-    @Override
-    public void useMove() {
-
     }
 }

@@ -3,7 +3,7 @@ package battle_system.Characters;
 import battle_system.Movelist.*;
 import battle_system.TypeList;
 
-public class PauloRegis extends Fighter {
+public class PauloRegis extends Boss {
 
     public PauloRegis() {
         super("Paulo Regis",
@@ -20,10 +20,5 @@ public class PauloRegis extends Fighter {
                 new Freeze(),
                 new Block("Icy Shield"));
         setMoveTargets(null, null, this, this);
-        // TODO: Random numbers (1-3) for move targets
-    }
-
-    public void dialogue() {
-
     }
 }

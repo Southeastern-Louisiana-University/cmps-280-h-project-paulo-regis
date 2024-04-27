@@ -15,12 +15,7 @@ public class Regenerate extends Move {
     }
 
     @Override
-    public void useMove(Fighter target) {
-        // Regain hp
-    }
-
-    @Override
-    public void useMove() {
-
+    public void useMove(Fighter attacker, Fighter target) {
+        target.modifyHp(-getPower());
     }
 }

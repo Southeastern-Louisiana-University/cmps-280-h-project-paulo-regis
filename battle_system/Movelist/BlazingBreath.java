@@ -13,15 +13,4 @@ public class BlazingBreath extends Move {
                 100,
                 new Burning());
     }
-
-    @Override
-    public void useMove(Fighter target) {
-        // Deal damage
-        getInflicts().applyEffect(target);
-    }
-
-    @Override
-    public void useMove() {
-        getInflicts().applyEffect(getTarget());
-    }
 }

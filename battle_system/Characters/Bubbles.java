@@ -16,7 +16,7 @@ public class Bubbles extends Fighter {
                 175,
                 50,
                 new BubbleBazooka(),
-                new Regenerate(),
+                new Regenerate(), // TODO: Choose a target for this
                 new Block("Block"));
         setMoveTargets(boss, null, this, this);
     }
