@@ -10,7 +10,7 @@ public class Pippin extends Fighter {
                 "Good Boi (doggo)",
                 TypeList.GRASS,
                 TypeList.WATER,
-                150,
+                300,
                 25,
                 100,
                 200, // high spa

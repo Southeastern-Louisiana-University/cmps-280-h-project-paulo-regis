@@ -10,7 +10,7 @@ public class PauloRegis extends Boss {
                 "Demigod of Eternal Winter",
                 TypeList.ICE,
                 TypeList.ROCK,
-                300,
+                1000,
                 50,
                 200,  // High def
                 125,

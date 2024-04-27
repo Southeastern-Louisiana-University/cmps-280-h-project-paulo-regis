@@ -127,7 +127,7 @@ public abstract class Fighter implements Comparable<Fighter> {
     private void verifyHp() {
         if (hpCurrent > getHpMax()) {
             hpCurrent = getHpMax();
-        } else if (hpCurrent < 0) {
+        } else if (isFainted()) {
             System.out.println(name + " has fainted and can no longer fight!");
             hpCurrent = 0;
         }
@@ -160,6 +160,8 @@ public abstract class Fighter implements Comparable<Fighter> {
         verifyHp();
         System.out.println(" (" + getHpCurrent() + "/" + getHpMax() + ")");
     }
+
+    public boolean isFainted() {return (getHpCurrent() <= 0);}
 
     public void setMove(int index, Move move) {
         if (verifyChoice(index, 1, 4, "setting a move")) {

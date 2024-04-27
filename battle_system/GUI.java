@@ -52,7 +52,7 @@ public class GUI {
 
     public void generateMoves(Fighter c) {
         Move[] moveset = c.getMoveset();
-        System.out.println("> Moves:");
+        System.out.println("> "+c.getName()+"'s Moves:");
         for (int i = 0; i < moveset.length; i++) {
             Move move = moveset[i];
             System.out.print("["+(i)+"] "+move.getName()+" (Power " + move.getPower() + ", Accuracy " + move.getAccuracy());
@@ -65,9 +65,9 @@ public class GUI {
     public void generateStats(Fighter c) {
         int[] stats = c.getStatsActual();
         System.out.println("> Stats:");
-        System.out.println("[0] HP : " + stats[0] + "\t[3] SPD: " + stats[3]);
-        System.out.println("[1] ATK: " + stats[1] + "\t[4] SPA: " + stats[4]);
-        System.out.println("[2] DEF: " + stats[2] + "\t[5] SPE: " + stats[5]);
+        System.out.println("[0] HP : " + stats[0] + " \t[3] SPD: " + stats[3]);
+        System.out.println("[1] ATK: " + stats[1] + " \t[4] SPA: " + stats[4]);
+        System.out.println("[2] DEF: " + stats[2] + " \t[5] SPE: " + stats[5]);
     }
 
     public void generateSummary(Fighter c) {
@@ -133,6 +133,7 @@ public class GUI {
                     break;
                 case 1:
 //                    System.out.println("Generating Moves...");
+                    generateLineBreak();
                     chooseMove(c);
                     validOption = true;
                     break;

@@ -9,7 +9,7 @@ public class Nova extends Fighter {
                 "Kitten",
                 TypeList.FIRE,
                 TypeList.ICE,
-                125,
+                250,
                 200, // high atk
                 100,
                 150,

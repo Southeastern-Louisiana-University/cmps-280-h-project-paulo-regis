@@ -15,6 +15,11 @@ public class TurnSystem {
     private Fighter[] playerList = new Fighter[3];
     private Move[] actionList = new Move[4];
 
+    // -1 is bad ending
+    // 0 is no ending
+    // 1 is good ending
+    private int ending = 0;
+
     public TurnSystem(Fighter fighter1,
                       Fighter fighter2,
                       Fighter fighter3,
@@ -32,16 +37,6 @@ public class TurnSystem {
             } else {continue;}
         }
     }
-
-//    public void decideActionBoss() {
-//        Fighter boss = fighterList[3];
-//        int multiplier = 2;
-//        if (0.333 < ((double) boss.getHpCurrent())/boss.getHpMax()) {
-//            multiplier = 3;
-//        }
-//        int rng = (int) (Math.floor(Math.random()*multiplier));
-//        decideAction(boss, boss.getMove(rng));
-//    }
 
     public Move getAction(Fighter c) {
         Move action = null;
@@ -96,15 +91,22 @@ public class TurnSystem {
         }
     }
 
-//    private boolean playerTurn = false;
-//
-//    public boolean isPlayerTurn() {
-//        return playerTurn;
-//    }
-//
-//    public void nextTurn() {
-//        playerTurn = !playerTurn;
-//    }
+    private int determineEnding() {
+        if (fighterList[0].isFainted() &&
+            fighterList[1].isFainted() &&
+            fighterList[2].isFainted()) {
+            return -1;
+        } else if (fighterList[3].isFainted()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
+    public int getEnding() {return ending;}
+
+    public void endStep() {
+        ending = determineEnding();
+    }
 
 }

@@ -9,7 +9,7 @@ public class Bubbles extends Fighter {
                 "Axolotl",
                 TypeList.WATER,
                 TypeList.FIRE,
-                250, // tanky
+                500, // tanky
                 50,
                 200, // tanky
                 100,
