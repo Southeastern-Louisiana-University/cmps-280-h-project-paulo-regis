@@ -11,6 +11,7 @@ public class BlazingBreath extends Move {
                 Category.SPECIAL,
                 100,
                 100,
-                new Burning());
+                new Burning(),
+                false);
     }
 }

@@ -6,7 +6,8 @@ import battle_system.Movelist.Move;
 import battle_system.TypeList;
 
 public class Fleeing extends Status {
-    static int damageToDoor = 0;
+    private int damageToDoor = 0;
+
     public Fleeing() {
         super("Trying To Run",
                 1,
@@ -34,4 +35,7 @@ public class Fleeing extends Status {
     public void endEffect(Fighter target) {
 
     }
+
+    public int getDamageToDoor() {return damageToDoor;}
+    public boolean isDoorBroken() {return damageToDoor >= 10;}
 }

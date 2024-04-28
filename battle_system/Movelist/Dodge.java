@@ -11,6 +11,7 @@ public class Dodge extends Move {
                 Category.STATUS,
                 0,
                 100,
-                new Dodging());
+                new Dodging(),
+                false);
     }
 }

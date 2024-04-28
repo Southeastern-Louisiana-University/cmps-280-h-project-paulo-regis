@@ -1,14 +1,17 @@
 package battle_system;
 
 import battle_system.Characters.Fighter;
+import battle_system.Characters.Sourceless;
 import battle_system.Movelist.Move;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class GUI {
 
     private Scanner input = new Scanner(System.in);
+    private SleepTimer sleepTimer = new SleepTimer();
 
     private TurnSystem turnSystem;
 
@@ -118,12 +121,7 @@ public class GUI {
                 option = input.nextInt();
             }
             switch (option) {
-//                case -1: // TODONE: Remove this after done testing
-//                    System.out.println("Going to previous fighter...");
-////                    return 1;
-//                    break;
                 case 0:
-//                    System.out.println("Generating Stats...");
                     generateLineBreak();
                     generateName(c);
                     generateStats(c);
@@ -132,7 +130,6 @@ public class GUI {
                     validOption = false;
                     break;
                 case 1:
-//                    System.out.println("Generating Moves...");
                     generateLineBreak();
                     chooseMove(c);
                     validOption = true;
@@ -144,8 +141,7 @@ public class GUI {
                     generateActions();
                     validOption = false;
             }
-        } while (option != 1/* && option != -1*/);
-//        System.out.println("Option " + option + " chosen!");
+        } while (option != 1);
     }
 
     public void chooseMove(Fighter c) {
@@ -160,7 +156,6 @@ public class GUI {
             }
             switch (option) {
                 case -1:
-//                    System.out.println("Exiting...");
                     validOption = true;
                     chooseAction(c);
                     break;
@@ -168,9 +163,12 @@ public class GUI {
                 case 1:
                 case 2:
                 case 3:
-                    validOption = true;
-//                    System.out.println("Using move #" + option + "...");
-                    turnSystem.decideAction(c, c.getMove(option));
+                    if (c.getMove(option).isChooseTarget()) {
+                        if (chooseTarget(c.getMove((option)), c)) {
+                            validOption = true;
+                        } else {validOption = false;}
+                    } else {validOption = true;}
+                    if (validOption) {turnSystem.decideAction(c, c.getMove(option));}
                     break;
                 default:
                     System.out.println("That's not a valid parameter!");
@@ -199,6 +197,36 @@ public class GUI {
         turnSystem.decideAction(boss, boss.getMove(rng));
     }
 
+    public void generateTargets(Fighter attacker) {
+        System.out.println("> Targets for " + attacker.getName() + ":");
+        for (int i = 0; i < playerList.length; i++) {
+            Fighter player = playerList[i];
+            System.out.println("[" + i + "] " + player.getName() + " ("+player.getHpCurrent()+"/"+player.getHpMax()+")");
+        }
+    }
+
+    public boolean chooseTarget(Move move, Fighter attacker) {
+        boolean validOption = true;
+        generateTargets(attacker);
+        int option;
+        do {
+            System.out.print("\nChoose a target: ");
+            option = input.nextInt();
+
+            if (option < 0 || option > 2) {
+//            if (option < -1 || option > 2) {
+                System.out.println("That's not a valid parameter!");
+                generateLineBreak();
+                generateTargets(attacker);
+                validOption = false;
+            } else {
+                if (option > 0 && option < 2) {move.setTarget(playerList[option]);}
+                validOption = true;
+            }
+        } while (!validOption);
+        return (option != -1);
+    }
+
     public void chooseActionsAll() { // TODO: Allow going back to previous fighters
         for (int i = 0; i < playerList.length; i++) {
             chooseAction(playerList[i]);
@@ -219,6 +247,24 @@ public class GUI {
         for (int i = 0; i < turnOrder.size(); i++) {
                 System.out.println("["+i+"] "+turnOrder.get(i).getName());
         }
+    }
 
+    public void describeEndingGood() {
+        println("Paulo Regis, exhausted, shouts \"I yield!! I yield!\"");
+        println("But he still seems to have something up his sleeve...");
+    }
+
+    public void describeEndingBad() {
+        println("With all three Paulomon on the ground, unconscious and unable to fight,");
+        println("Paulo Regis looms over you with an evil gleam in his eye. \"MWAHAHAHAHA,");
+        println("you have failed to defeat me!! Now you will succumb to the ice the world");
+        println("deserves!\" The gems on his crown glow red, and you suddenly feel a chill");
+        println("settle into your very bones. Your movement stalls, and you realize ice is");
+        println("creeping up your legs, body, arms, neck... soon, your entire vision turns");
+        println("blue, and you are locked away lost in eternal winter.");
+    }
+
+    private void println(String message) {
+        System.out.println(message);
     }
 }

@@ -11,6 +11,7 @@ public class Infatuated extends Status {
 
     @Override
     public void applyEffect(Fighter target) {
+        System.out.println(target.getName() + " is infatuated! Their defense and special defense both decrease!");
         target.modifyStatsMod(3, -75);
         target.modifyStatsMod(5, -75);
     }

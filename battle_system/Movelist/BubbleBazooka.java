@@ -11,6 +11,7 @@ public class BubbleBazooka extends Move {
                 Category.SPECIAL,
                 50,
                 100,
-                null);
+                null,
+                false);
     }
 }

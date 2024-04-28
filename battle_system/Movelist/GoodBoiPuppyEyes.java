@@ -11,6 +11,7 @@ public class GoodBoiPuppyEyes extends Move {
                 Category.STATUS,
                 0,
                 100,
-                new Infatuated());
+                new Infatuated(),
+                false);
     }
 }

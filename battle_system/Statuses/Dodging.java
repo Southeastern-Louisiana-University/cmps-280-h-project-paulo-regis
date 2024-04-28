@@ -11,6 +11,7 @@ public class Dodging extends Status {
 
     @Override
     public void applyEffect(Fighter target) {
+        System.out.println(target.getName() + " is dodging! Their speed increases!");
         target.modifyStatsMod(5, 100);
     }
 

@@ -134,7 +134,7 @@ public abstract class Fighter implements Comparable<Fighter> {
     }
 
     public void modifyHp(int hp) {
-        if (hpCurrent <= 0) {System.out.println(name + " has been revived!");}
+        if (hpCurrent <= 0) {System.out.println(name + " has been revived! (" + hpCurrent+"/"+getHpMax());}
         hpCurrent += hp;
         verifyHp();
     }

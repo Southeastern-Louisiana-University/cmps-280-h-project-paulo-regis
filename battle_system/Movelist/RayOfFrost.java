@@ -10,6 +10,7 @@ public class RayOfFrost extends Move {
                 Category.SPECIAL,
                 150,
                 100,
-                null);
+                null,
+                false);
     }
 }

@@ -12,7 +12,8 @@ public class Freeze extends Move {
                 Category.STATUS,
                 25,
                 50,
-                new Frozen());
+                new Frozen(),
+                false);
     }
 
     @Override

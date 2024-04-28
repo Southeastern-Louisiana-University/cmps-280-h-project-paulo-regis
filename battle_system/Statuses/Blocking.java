@@ -11,7 +11,9 @@ public class Blocking extends Status {
 
     @Override
     public void applyEffect(Fighter target) {
+        System.out.println(target.getName() + " is now blocking! Their defense and special defense increase!");
         target.modifyStatsMod(3, 100);
+        target.modifyStatsMod(5, 100);
     }
 
     @Override

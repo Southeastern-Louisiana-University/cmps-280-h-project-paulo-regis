@@ -11,6 +11,7 @@ public class Flee extends Move {
                 Category.STATUS,
                 0,
                 0,
-                new Fleeing());
+                new Fleeing(),
+                false);
     }
 }

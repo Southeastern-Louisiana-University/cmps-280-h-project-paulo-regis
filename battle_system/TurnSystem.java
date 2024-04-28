@@ -7,8 +7,10 @@ import battle_system.Movelist.Move;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class TurnSystem {
+    private SleepTimer sleepTimer = new SleepTimer();
 
     private ArrayList<Fighter> turnOrder = new ArrayList<>();
     private Fighter[] fighterList = new Fighter[4];
@@ -44,9 +46,7 @@ public class TurnSystem {
             if (fighterList[i].compareTo(c) == 0) {
                 action = actionList[i];
             } else {continue;}
-        }
-
-        return action;
+        } return action;
     }
 
     public Move[] getActionList() {return actionList;}
@@ -80,14 +80,15 @@ public class TurnSystem {
 
     public void executeRound() {
         for (int i = 0; i < turnOrder.size(); i++) {
+            System.out.println("===");
             Fighter c = turnOrder.get(i);
             Move action = getAction(c);
 
             if (Objects.equals(action.getName(), new Freeze().getName())) {
                 c.useMoveAoE(action, playerList);
             } else {
-                c.useMove(action); // TODO: Set targets prior to using the move for Paulo's moves and for Regenerate
-            }
+                c.useMove(action);
+            } sleepTimer.sleep(1000);
         }
     }
 
@@ -98,9 +99,7 @@ public class TurnSystem {
             return -1;
         } else if (fighterList[3].isFainted()) {
             return 1;
-        } else {
-            return 0;
-        }
+        } else {return 0;}
     }
 
     public int getEnding() {return ending;}
@@ -108,5 +107,4 @@ public class TurnSystem {
     public void endStep() {
         ending = determineEnding();
     }
-
 }

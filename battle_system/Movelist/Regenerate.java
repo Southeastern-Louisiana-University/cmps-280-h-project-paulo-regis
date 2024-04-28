@@ -11,11 +11,13 @@ public class Regenerate extends Move {
                 Category.STATUS,
                 -50,
                 100,
-                null);
+                null,
+                true);
     }
 
     @Override
     public void useMove(Fighter attacker, Fighter target) {
         target.modifyHp(-getPower());
+//        System.out.println(attacker.getName() + " uses " + getName() + " on " + target.getName() + "! ("+target.getHpCurrent()+"/"+target.getHpMax()+")");
     }
 }

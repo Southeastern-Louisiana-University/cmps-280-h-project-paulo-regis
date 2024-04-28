@@ -10,6 +10,7 @@ public class VineWhip extends Move {
                 Category.SPECIAL,
                 100,
                 100,
-                null);
+                null,
+                false);
     }
 }

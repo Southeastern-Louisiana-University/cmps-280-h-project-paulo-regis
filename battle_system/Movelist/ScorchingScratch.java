@@ -11,7 +11,8 @@ public class ScorchingScratch extends Move {
                 Category.PHYSICAL,
                 100,
                 100,
-                new Burning());
+                new Burning(),
+                false);
     }
 
     @Override

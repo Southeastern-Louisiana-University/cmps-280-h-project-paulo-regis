@@ -12,6 +12,7 @@ public class Block extends Move {
                 Category.STATUS,
                 0,
                 100,
-                new Blocking()); // best boy block regens hp sometimes?
+                new Blocking(),
+                false); // best boy block regens hp sometimes?
     }
 }

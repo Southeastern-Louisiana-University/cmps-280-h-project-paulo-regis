@@ -19,6 +19,5 @@ public class Nova extends Fighter {
                 new BlazingBreath(),
                 new Dodge());
         setMoveTargets(boss, boss, this, this);
-        // TODO: Resistance to Freeze?
     }
 }
