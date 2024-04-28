@@ -68,8 +68,8 @@ public class GUI {
     public void generateStats(Fighter c) {
         int[] stats = c.getStatsActual();
         System.out.println("> Stats:");
-        System.out.println("[0] HP : " + stats[0] + " \t[3] SPD: " + stats[3]);
-        System.out.println("[1] ATK: " + stats[1] + " \t[4] SPA: " + stats[4]);
+        System.out.println("[0] HP : " + stats[0] + " \t[3] SPA: " + stats[3]);
+        System.out.println("[1] ATK: " + stats[1] + " \t[4] SPD: " + stats[4]);
         System.out.println("[2] DEF: " + stats[2] + " \t[5] SPE: " + stats[5]);
     }
 
