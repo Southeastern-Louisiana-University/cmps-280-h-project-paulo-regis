@@ -1,7 +1,4 @@
-import battle_system.SleepTimer;
-import battle_system.TurnSystem;
-
-import java.util.concurrent.TimeUnit;
+import paulomon.SleepTimer;
 
 public class Main {
     private static SleepTimer sleepTimer = new SleepTimer();

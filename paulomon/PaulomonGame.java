@@ -1,0 +1,60 @@
+package paulomon;
+// ----------------------------------------------
+//              JAVA PAULOMON BATTLE
+// ----------------------------------------------
+// A text-based companion battle against the
+// Doctor hell-bent on freezing the world over.
+// Heavily inspired by Pokémon, and playable
+// entirely within an IDE's output log.
+//
+//  Written by Christian Bankovic
+
+import paulomon.Characters.*;
+
+public class PaulomonGame {
+
+    private SleepTimer sleepTimer = new SleepTimer();
+
+    public Fighter _PauloRegis = new PauloRegis();
+    public Fighter _Bubbles = new Bubbles(_PauloRegis);
+    public Fighter _Nova = new Nova(_PauloRegis);
+    public Fighter _Pippin = new Pippin(_PauloRegis);
+
+    public TurnSystem _TurnSystem = new TurnSystem(_Bubbles, _Nova, _Pippin, _PauloRegis);
+    public GUI _GUI = new GUI(_TurnSystem, _Bubbles, _Nova, _Pippin, _PauloRegis);
+
+    public int round = 0;
+    public boolean gameOver = false;
+
+    public void playPaulomon() {
+        while (!gameOver) {
+            round++;
+            System.out.println("===");
+            System.out.println(">>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<" + ((round>=10) ? "<" : ""));
+            System.out.println("---------------- Round " + round + " ----------------");
+            System.out.println(">>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<" + ((round>=10) ? "<" : ""));
+            _GUI.chooseActionsAll();
+
+            // Stage 2: Decide turn order
+            _TurnSystem.createTurnOrder();
+
+            // Stage 3: Execute round
+            _TurnSystem.executeRound();
+
+            // Stage 4: End round
+            _TurnSystem.endStep();
+
+            // Stage 5: End the game, if need be
+            if (_TurnSystem.getEnding() != 0) {gameOver = true;}
+        }
+
+        // Enact ending
+        if (_TurnSystem.getEnding() > 0) {
+            _GUI.describeEndingGood();
+        } else if (_TurnSystem.getEnding() < 0) {
+            _GUI.describeEndingBad();
+        } else {
+            System.out.println("INVALID ENDING");
+        }
+    }
+}
