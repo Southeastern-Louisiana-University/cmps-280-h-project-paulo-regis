@@ -1,7 +1,12 @@
+import battleship.BattleshipGame;
+import paulomon.PaulomonGame;
 import paulomon.SleepTimer;
 
 public class Main {
     private static SleepTimer sleepTimer = new SleepTimer();
+
+    private BattleshipGame _battleshipGame = new BattleshipGame();
+    private PaulomonGame _paulomonGame = new PaulomonGame();
 
     public static void main(String[] args) {
 
