@@ -15,16 +15,16 @@ public class PaulomonGame {
 
     private SleepTimer sleepTimer = new SleepTimer();
 
-    public Fighter _PauloRegis = new PauloRegis();
-    public Fighter _Bubbles = new Bubbles(_PauloRegis);
-    public Fighter _Nova = new Nova(_PauloRegis);
-    public Fighter _Pippin = new Pippin(_PauloRegis);
+    private Fighter _PauloRegis = new PauloRegis();
+    private Fighter _Bubbles = new Bubbles(_PauloRegis);
+    private Fighter _Nova = new Nova(_PauloRegis);
+    private Fighter _Pippin = new Pippin(_PauloRegis);
 
-    public TurnSystem _TurnSystem = new TurnSystem(_Bubbles, _Nova, _Pippin, _PauloRegis);
-    public GUI _GUI = new GUI(_TurnSystem, _Bubbles, _Nova, _Pippin, _PauloRegis);
+    private TurnSystem _TurnSystem = new TurnSystem(_Bubbles, _Nova, _Pippin, _PauloRegis);
+    private GUI _GUI = new GUI(_TurnSystem, _Bubbles, _Nova, _Pippin, _PauloRegis);
 
-    public int round = 0;
-    public boolean gameOver = false;
+    private int round = 0;
+    private boolean gameOver = false;
 
     public void playPaulomon() {
         while (!gameOver) {

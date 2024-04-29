@@ -5,11 +5,10 @@ import paulomon.SleepTimer;
 public class Main {
     private static SleepTimer sleepTimer = new SleepTimer();
 
-    private BattleshipGame _battleshipGame = new BattleshipGame();
-    private PaulomonGame _paulomonGame = new PaulomonGame();
+    private static BattleshipGame _battleshipGame = new BattleshipGame();
+    private static PaulomonGame _paulomonGame = new PaulomonGame();
 
     public static void main(String[] args) {
-
 
         System.out.println("Welcome to my B-B-B-B-BOSS BATTLE!");
 

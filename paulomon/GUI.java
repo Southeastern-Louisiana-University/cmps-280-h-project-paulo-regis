@@ -4,6 +4,7 @@ import paulomon.Characters.Fighter;
 import paulomon.Movelist.Move;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GUI {
@@ -34,6 +35,23 @@ public class GUI {
         playerList[0] = fighter1;
         playerList[1] = fighter2;
         playerList[2] = fighter3;
+    }
+
+    private int takeInputInt() {
+        boolean validValue = true;
+        int output = 0;
+        do {
+            try {
+                output = (int) (input.nextDouble());
+                validValue = true;
+            } catch (InputMismatchException e) {
+                input.nextLine();
+                validValue = false;
+                System.out.print("Please enter a valid value: ");
+            }
+        } while(!validValue);
+
+        return output;
     }
 
     public void clearGUI() {
@@ -111,12 +129,12 @@ public class GUI {
         generateActions();
         boolean validOption = true;
         System.out.print("\nChoose an action: ");
-        int option = input.nextInt();
+        int option = takeInputInt();
 
         do {
             if (!validOption) {
                 System.out.print("\nChoose an action: ");
-                option = input.nextInt();
+                option = takeInputInt();
             }
             switch (option) {
                 case 0:
@@ -146,11 +164,11 @@ public class GUI {
         generateMoves(c);
         boolean validOption = true;
         System.out.print("\nChoose a move: ");
-        int option = input.nextInt();
+        int option = takeInputInt();
         do {
             if (!validOption) {
                 System.out.print("\nChoose a move: ");
-                option = input.nextInt();
+                option = takeInputInt();
             }
             switch (option) {
                 case -1:
@@ -209,7 +227,7 @@ public class GUI {
         int option;
         do {
             System.out.print("\nChoose a target: ");
-            option = input.nextInt();
+            option = takeInputInt();
 
             if (option < 0 || option > 2) {
 //            if (option < -1 || option > 2) {
