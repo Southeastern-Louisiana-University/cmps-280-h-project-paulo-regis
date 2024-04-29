@@ -52,6 +52,14 @@ public class PaulomonGame {
         }
 
         // Enact ending
+        enactEnding();
+    }
+
+    public void describeCharacterIntros() {
+        _GUI.inspectCharacters();
+    }
+
+    public void enactEnding() {
         if (_TurnSystem.getEnding() > 0) {
             _GUI.describeEndingGood();
         } else if (_TurnSystem.getEnding() < 0) {
@@ -59,9 +67,5 @@ public class PaulomonGame {
         } else {
             System.out.println("INVALID ENDING");
         }
-    }
-
-    public void describeCharacterIntros() {
-        _GUI.inspectCharacters();
     }
 }
