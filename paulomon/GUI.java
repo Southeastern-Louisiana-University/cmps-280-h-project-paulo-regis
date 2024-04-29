@@ -27,14 +27,10 @@ public class GUI {
                Fighter fighter3,
                Fighter boss) {
         this.turnSystem = turnSystem;
-        this.fighter1 = fighter1;
-        this.fighter2 = fighter2;
-        this.fighter3 = fighter3;
+        this.fighter1 = playerList[0] = fighter1;
+        this.fighter2 = playerList[1] = fighter2;
+        this.fighter3 = playerList[2] = fighter3;
         this.boss = boss;
-
-        playerList[0] = fighter1;
-        playerList[1] = fighter2;
-        playerList[2] = fighter3;
     }
 
     private int takeInputInt() {
@@ -66,7 +62,7 @@ public class GUI {
     }
 
     public void generateName(Fighter c) {
-        System.out.println(c.getName() + " the " + c.getType() + " " + c.getAnimal() + ": " + c.getHpCurrent() + "/" + c.getHpMax());
+        System.out.println(c.getName() + " the " + c.getType() + " " + c.getAnimal() + ": " + c.getHpCurrent() + "/" + c.getHpMax() + " HP");
     }
 
     public void generateMoves(Fighter c) {
@@ -115,6 +111,41 @@ public class GUI {
         System.out.println(b.getName() + " the " + b.getAnimal() + ": " + b.getHpCurrent() + "/" + b.getHpMax());
         generateLineBreak();
         newLine();
+    }
+
+    public void generateCharacters() {
+        System.out.println("> The Paulomon:");
+        for (int i = 0; i < playerList.length; i++) {
+            System.out.print("["+i+"] ");
+            generateName(playerList[i]);
+        }
+    }
+
+    public void inspectCharacters() {
+        generateCharacters();
+
+        System.out.print("\nChoose a Paulomon to inspect (type -1 to move on): ");
+//        boolean validOption = true;
+        int option;
+        do {
+            option = takeInputInt();
+            switch (option) {
+                case -1:
+                    // Moving on
+                    break;
+                case 0:
+                case 1:
+                case 2:
+                    generateSummary(playerList[option]);
+                    generateCharacters();
+                    System.out.print("\nChoose a Paulomon to inspect (type -1 to move on): ");
+//                    validOption = true;
+                    break;
+                default:
+                    System.out.print("Please type a valid option: ");
+//                    validOption = false;
+            }
+        } while (option != -1);
     }
 
     public void generateActions() {

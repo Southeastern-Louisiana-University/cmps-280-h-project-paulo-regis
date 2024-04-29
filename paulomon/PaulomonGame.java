@@ -16,17 +16,20 @@ public class PaulomonGame {
     private SleepTimer sleepTimer = new SleepTimer();
 
     private Fighter _PauloRegis = new PauloRegis();
-    private Fighter _Bubbles = new Bubbles(_PauloRegis);
     private Fighter _Nova = new Nova(_PauloRegis);
     private Fighter _Pippin = new Pippin(_PauloRegis);
+    private Fighter _Bubbles = new Bubbles(_PauloRegis);
 
-    private TurnSystem _TurnSystem = new TurnSystem(_Bubbles, _Nova, _Pippin, _PauloRegis);
-    private GUI _GUI = new GUI(_TurnSystem, _Bubbles, _Nova, _Pippin, _PauloRegis);
+    private TurnSystem _TurnSystem = new TurnSystem(_Nova, _Pippin, _Bubbles, _PauloRegis);
+    private GUI _GUI = new GUI(_TurnSystem, _Nova, _Pippin, _Bubbles, _PauloRegis);
 
     private int round = 0;
     private boolean gameOver = false;
 
     public void playPaulomon() {
+
+        describeCharacterIntros();
+
         while (!gameOver) {
             round++;
             System.out.println("===");
@@ -56,5 +59,9 @@ public class PaulomonGame {
         } else {
             System.out.println("INVALID ENDING");
         }
+    }
+
+    public void describeCharacterIntros() {
+        _GUI.inspectCharacters();
     }
 }
