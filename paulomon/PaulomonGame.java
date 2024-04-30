@@ -26,6 +26,12 @@ public class PaulomonGame {
     private int round = 0;
     private boolean gameOver = false;
 
+    private int ending = 0;
+
+    public int getEnding() {
+        return ending;
+    }
+
     public void playPaulomon() {
 
         describeCharacterIntros();
@@ -62,10 +68,13 @@ public class PaulomonGame {
     public void enactEnding() {
         if (_TurnSystem.getEnding() > 0) {
             _GUI.describeEndingGood();
+            ending = 1;
         } else if (_TurnSystem.getEnding() < 0) {
             _GUI.describeEndingBad();
+            ending = -1;
         } else {
             System.out.println("INVALID ENDING");
+            ending = 0;
         }
     }
 }

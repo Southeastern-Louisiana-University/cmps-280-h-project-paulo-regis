@@ -297,7 +297,7 @@ public class GUI {
     }
 
     public void describeEndingGood() {
-        println("Paulo Regis, exhausted, shouts \"I yield!! I yield!\"");
+        println("Dr. Regis, exhausted, shouts \"I yield!! I yield!\"");
         println("But he still seems to have something up his sleeve...");
     }
 
