@@ -85,13 +85,14 @@ public class BattleshipGame {
 
                 case END -> {
                     System.out.println("\n\n----------- GAME OVER -----------");
-                    System.out.println(winner.getName() + " sunk all battleships and won!");
+                    System.out.println(winner.getName() + " sunk all battleships and won in " + turnCount + " turns!");
                     System.out.println();
                     System.out.println(player1.getBoard().generateGameOverView(cpuPlayer.getBoard()));
 
                     gameActive = false;
 
                     if (cpuPlayer == winner) {
+                        pause(3000);
                         System.out.println("\t\t\t\t      ||||");
                         System.out.println("\t\t\t\t      |||||");
                         System.out.println("\t\t\t\t      ||||||");
