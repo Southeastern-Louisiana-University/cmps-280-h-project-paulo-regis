@@ -151,6 +151,7 @@ public class dialogue {
 // Whenever you get to the next stage then it'll set to that time for you to jump back to.
 // You won't know it's for time travel until you've been defeated.
 // When you jump back you feel weaker or faint. Maybe you look pale or the pocket watch looks different.
+        //Dialogue written by Angus McKee
         return text;
     }
 }
