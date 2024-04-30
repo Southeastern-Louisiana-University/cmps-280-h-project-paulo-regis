@@ -215,7 +215,9 @@ public class GUI {
                             validOption = true;
                         } else {validOption = false;}
                     } else {validOption = true;}
-                    if (validOption) {turnSystem.decideAction(c, c.getMove(option));}
+                    if (validOption) {
+                        turnSystem.decideAction(c, c.getMove(option));
+                    }
                     break;
                 default:
                     System.out.println("That's not a valid parameter!");
@@ -267,7 +269,7 @@ public class GUI {
                 generateTargets(attacker);
                 validOption = false;
             } else {
-                if (option > 0 && option < 2) {move.setTarget(playerList[option]);}
+                if (option >= 0 && option <= 2) {move.setTarget(playerList[option]);}
                 validOption = true;
             }
         } while (!validOption);

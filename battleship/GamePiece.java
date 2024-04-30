@@ -3,10 +3,16 @@ package battleship;
 public abstract class GamePiece {
     // Takes a Battleship coordinate as a String input and returns the coordinate as an array of the 2 corresponding integers.
     // Returns null if the action was unsuccessful.
+
     public static int[] parseLocation(String location){
+        return parseLocation(location, false);
+    }
+    public static int[] parseLocation(String location, boolean feedback){
         // Ensures that the input is in the format of a Battleship coordinate, I.E. B10
         if(!location.matches("[A-Za-z][0-9]{1,2}")){
-            System.out.println("Coordinates should be written as a letter followed by one or two digits, such as: D10");
+            if(feedback) {
+                System.out.println("Coordinates should be written as a letter followed by one or two digits, such as: D10");
+            }
             return null;
         }
 
@@ -17,6 +23,20 @@ public abstract class GamePiece {
         // Everything after the first letter should always be an integer.
         output[1] = Integer.parseInt(location.substring(1)) - 1;
         return output;
+    }
+
+    public static int[] findTranslation(String start, String end){
+        int[] startCoord = parseLocation(start);
+        int[] endCoord = parseLocation(end);
+
+        if(startCoord != null && endCoord != null){
+            for(int i = 0; i < 2; i++){
+                endCoord[i] -= startCoord[i];
+            }
+            return endCoord;
+        }
+
+        return null;
     }
 
     // Takes two integers as an input and rewrites them in the format of a Battleship coordinate: I.E. B7
