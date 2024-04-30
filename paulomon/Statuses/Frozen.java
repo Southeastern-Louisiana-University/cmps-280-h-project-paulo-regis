@@ -12,7 +12,7 @@ public class Frozen extends Status {
 
     @Override
     public void applyEffect(Fighter target) {
-        System.out.println(target.getName() + " is frozen and unable to move!");
+//        System.out.println(target.getName() + " is frozen and unable to move!");
         // TODO: Pass turn
     }
 
