@@ -10,47 +10,47 @@ public class Main {
         dialogue d = new dialogue();
         Trivia test = new Trivia();
 
-        System.out.println("Welcome to our B-B-B-B-BOSS BATTLE!");
-
-        pause();
-
-        System.out.println("Let's jump RIGHT IN to our FIRST TRIAL, BATTLESHIP!");
-
-        //BattleshipGame.playBattleship();
-
-        //move to battle
-        d.dialogue(6);
-        System.out.println(d.text);
-        pause();
-
-        //waking up
-        d.dialogue(10);
-        System.out.println(d.text);
-        pause();
-
-        //introductions
-        for (int i = 7; i < 10; i++) {
-            d.dialogue(i);
-            System.out.println(d.text);
-        }
-        pause();
-
-        d.dialogue(11);
-        System.out.println(d.text);
-        pause();
-
-        //regis entrance
-        d.dialogue(17);
-        System.out.println(d.text);
-        pause();
-
-        d.dialogue(21);
-        System.out.println(d.text);
-        pause();
-
-        d.dialogue(22);
-        System.out.println(d.text);
-        pause();
+//        System.out.println("Welcome to our B-B-B-B-BOSS BATTLE!");
+//
+//        pause();
+//
+//        System.out.println("Let's jump RIGHT IN to our FIRST TRIAL, BATTLESHIP!");
+//
+//        //BattleshipGame.playBattleship();
+//
+//        //move to battle
+//        d.dialogue(6);
+//        System.out.println(d.text);
+//        pause();
+//
+//        //waking up
+//        d.dialogue(10);
+//        System.out.println(d.text);
+//        pause();
+//
+//        //introductions
+//        for (int i = 7; i < 10; i++) {
+//            d.dialogue(i);
+//            System.out.println(d.text);
+//        }
+//        pause();
+//
+//        d.dialogue(11);
+//        System.out.println(d.text);
+//        pause();
+//
+//        //regis entrance
+//        d.dialogue(17);
+//        System.out.println(d.text);
+//        pause();
+//
+//        d.dialogue(21);
+//        System.out.println(d.text);
+//        pause();
+//
+//        d.dialogue(22);
+//        System.out.println(d.text);
+//        pause();
 
         battle.playPaulomon();
         pause();
