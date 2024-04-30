@@ -13,9 +13,11 @@ public class dialogue {
             case 4:
                 text = "You sunk an enemy battleship. Good work soldier.";
             case 5:
-                text = "The enemy has sunk one of your battleships. get your head in the game soldier.";
+                text = "The enemy has sunk one of your battleships. Get your head in the game soldier.";
             case 6:
-                text = "Choose your Paulo-mon";
+                text = "You've risen out of the battle victorious. You feel accomplished, the smell of freedom in the air. " +
+                        "As you simmer in the moment, something approaches from behind. *thwack!* " +
+                        "You've been knocked unconscious";
                 //change it to wake up first and then be introduced to each paulo-mon.
                 //This way you can read the name tags and see the stats.
                 //Each paulo-mon will be used every round turn based.
@@ -26,37 +28,45 @@ public class dialogue {
             case 9:
                 text = "Pippin: The best boy (aka the dog with power of grass)";
             case 10:
-                text = "You've selected Bubbles. Good luck to both you and your Paulo-mon.";
-            case 11:
-                text = "You've selected Nova. Good luck to both you and your Paulo-mon.";
-            case 12:
-                text = "You've selected Pippin. Good luck to both you and your Paulo-mon.";
-            case 13:
                 text = "You wake up in a mysterious place unsure of how you got there. " +
-                        "Your eyes are facing the sky which looks like a bright blur as you blink to clear your vision. " +
-                        "Your Paulo-mon climbs on top of you and licks your face. ";
+                    "Your eyes are facing the sky which looks like a bright blur as you blink to clear your vision. " +
+                    "Your Paulo-mons surround you, worried if you're ok. ";
+            case 11:
+                text = "\"Are ya'll happy to see me?\" ";
+            case 12:
+                text = "You reach into your pocket discovering a pocket watch. It's silver in color and quite clean for " +
+                        "a random old watch you've just found. ";
+            case 13:
+                text = "\"Huh? The hands are frozen. Maybe I can swap the battery out or at least pawn it\" ";
             case 14:
-                text = "\"Are you happy to see me, Bubbles?\" ";
+                text = "In fear, you quickly squeeze the pocket watch in your pocket. " +
+                        "You've been transported not long before the moment you've just experienced. " +
+                        "The watch seems to have a slight crack in the glass and is a little tarnished. ";
             case 15:
-                text = "\"Are you happy to see me, Nova?\" ";
+                text = "You quickly squeeze the pocket watch in your pocket. " +
+                        "You've been transported not long before the moment you've just experienced. " +
+                        "The watch seems to have a few more cracks in the glass and is a pretty tarnished. ";
             case 16:
-                text = "\"Are you happy to see me, Pippin?\" ";
+                text = "You quickly squeeze the pocket watch in your pocket. " +
+                        "You've been transported not long before the moment you've just experienced. " +
+                        "The watch is completely shattered and is unable to be salvaged. " +
+                        "You're no longer able to time jump. ";
             case 17:
                 text = "A tall dark figure enters, it's shadow draping over you. " +
                         "You stare into the figure's glowing eyes as it pulls it's hood back. " +
                         "It's Dr. Regis! Why does he seem so ill-tempered? What could possibly make him so angry? ";
             case 18:
-                text = "Bubble tugs on your sleeve and points at the top of Dr. Regis' head. ";
+                text = "The Paulo-mon whimper in fear. Pippin tucks his head under your arm and points at the top of Dr. Regis' head. ";
             case 19:
-                text = "Nova bights your wrist and points at the top of Dr. Regis' head. ";
+                text = "Nova bites your wrist and points at the top of Dr. Regis' head. "; //scratch
             case 20:
-                text = "Pippin tucks his head under your arm and points at the top of Dr. Regis' head. ";
+                text = "Pippin tucks his head under your arm and points at the top of Dr. Regis' head. "; //scratch
             case 21:
                 text = "Dr. Regis freezes the surrounding area. There's no escape! " +
                         "You and your Paulo-mon must fight to survive. ";
             case 22:
-                text = "Your Paulo-mon lunges in front of you to protect you. " +
-                        "You must aid it in the fight against Dr. Regis. ";
+                text = "Nova lunges in front of you to protect you. " +
+                        "The rest follow in pursuit, awaiting your command. ";
             case 23:
                 text = "Dr. Regis has been defeated. He's kneeling on the ground, head low." +
                         "He looks up at you and says, \"Heh... You've beat me.\" " +
@@ -79,21 +89,28 @@ public class dialogue {
                         "and release the juiciest fart known to man into the slot. That taco bell did " +
                         "not sit well with you. "; //finish
 
-                /*
-            case 29:
-                text =
-            case 30:
-                text =
-            case 31:
-                text =
-            case 32:
-                text =
-            case 33:
-                text =
-            case 34:
-                text =
-                */
 
+            case 29:
+                text = "Dr. Regis says, \"Fine. A deal's a deal. I won't freeze your world. What fun would that be anyways.\" " +
+                        "You hug your Paulo-mon friends, assuring them everything is ok. Dr. Regis turns around and goes to fly away. " +
+                        "Nova looks up at you then at his crown. You nod to Nova and he nods back. " +
+                        "You pick Nova up, spin, and cast Nova over to Dr. Regis. Nova uses his flame powers to boost him." +
+                        "He manages to knock the crown off of Dr. Regis' head, freeing him from the curse." +
+                        "Dr. Regis falls to the ground regaining consciousness. He looks up at you." +
+                        "He says to you, \"thank you for freeing me, my student. I couldn't control myself. " +
+                        "It was like the crown had a mind of its own\" You return the Paulo-mon back to Dr. Regis " +
+                        "and they all walk off grateful for your help. ";
+            case 30:
+                text = "With all three Paulomon on the ground, unconscious and unable to fight, " +
+                        "Paulo Regis looms over you with an evil gleam in his eye. \"MWAHAHAHAHA, " +
+                        "you have failed to defeat me!! Now your world will succumb to the icy hell-scape " +
+                        "it deserves!\" The gems on his crown start to violently glow red. " +
+                        "You suddenly feel a chill settle into your very bones, your movement stalls, " +
+                        "and you start to realize ice is creeping up your legs, body, arms, neck... " +
+                        "soon, your entire vision turns blue as a tear drop streams down your cheek freezing halfway down, " +
+                        "and you are locked away lost in eternal winter. You've been defeated";
+            case 31:
+                text = "The End.";
 
 
         }
