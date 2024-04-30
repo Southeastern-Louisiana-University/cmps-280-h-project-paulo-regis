@@ -157,8 +157,8 @@ public abstract class Fighter implements Comparable<Fighter> {
         damage -= defense/5;
         System.out.print(name + " takes " + damage + " damage!");
         hpCurrent -= damage/divider;
-        verifyHp();
         System.out.println(" (" + getHpCurrent() + "/" + getHpMax() + ")");
+        verifyHp();
     }
 
     public boolean isFainted() {return (getHpCurrent() <= 0);}

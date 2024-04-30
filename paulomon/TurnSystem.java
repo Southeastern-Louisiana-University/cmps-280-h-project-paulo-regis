@@ -1,8 +1,8 @@
 package paulomon;
 
 import paulomon.Characters.Fighter;
-import paulomon.Movelist.Freeze;
-import paulomon.Movelist.Move;
+import paulomon.Movelist.*;
+import paulomon.Statuses.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -14,6 +14,8 @@ public class TurnSystem {
     private Fighter[] fighterList = new Fighter[4];
     private Fighter[] playerList = new Fighter[3];
     private Move[] actionList = new Move[4];
+
+    private Fleeing fleeStatus = new Fleeing();
 
     // -1 is bad ending
     // 0 is no ending
@@ -82,14 +84,23 @@ public class TurnSystem {
             Fighter c = turnOrder.get(i);
             Move action = getAction(c);
 
-            if (Objects.equals(action.getName(), new Freeze().getName())) {
-                c.useMoveAoE(action, playerList);
+            if (c.isFainted()) {
+                System.out.println(c.getName() + " has fainted and cannot fight!");
             } else {
-                c.useMove(action);
+                if (Objects.equals(action.getName(), new Freeze().getName())) {
+                    c.useMoveAoE(action, playerList);
+                } else {c.useMove(action);}
             } sleepTimer.sleep(1000);
         }
     }
 
+
+    /** -1 is bad ending
+     *  0 is no ending
+     *  1 is good ending
+     *  2 is neutral/bad ending
+     * @return an integer based on what ending has been achieved
+     */
     private int determineEnding() {
         if (fighterList[0].isFainted() &&
             fighterList[1].isFainted() &&
@@ -97,6 +108,8 @@ public class TurnSystem {
             return -1;
         } else if (fighterList[3].isFainted()) {
             return 1;
+        } else if (fleeStatus.isDoorBroken()) {
+            return 2;
         } else {return 0;}
     }
 

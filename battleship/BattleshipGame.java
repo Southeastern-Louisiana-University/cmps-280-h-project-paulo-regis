@@ -10,6 +10,7 @@ package battleship;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class BattleshipGame {
     static Scanner input = new Scanner(System.in);
@@ -19,6 +20,7 @@ public class BattleshipGame {
     static String lastSquare;
     static boolean shipStruck;
     static boolean shipSank;
+    static int cpuShipsSank = 0;
 
     // These are the lengths of the 5 ship pieces that come with a physical battleship game.
     private final static int[] pieces = {5, 4, 3, 3, 2};
@@ -36,7 +38,7 @@ public class BattleshipGame {
         boolean gameActive = true;
 
         Player player1 = new Player();
-        Player player2 = new Player("Dr. Paulo");
+        Computer cpuPlayer = new Computer("Dr. Paulo");
         Player winner = null;
 
         // Big ol' do-while loop. One iteration of this game loop should correspond to one in-game step or turn.
@@ -57,13 +59,13 @@ public class BattleshipGame {
                 }
 
                 case P2SETUP -> {
-                    automaticSetupBoard(player2);
+                    automaticSetupBoard(cpuPlayer);
                     gameState = states.P1TURN;
                 }
 
                 case P1TURN -> {
-                    takeTurn(player1, player2);
-                    if(player2.checkLoss()){
+                    takeTurn(player1, cpuPlayer);
+                    if(cpuPlayer.checkLoss()){
                         winner = player1;
                         gameState = states.END;
                         continue;
@@ -72,9 +74,9 @@ public class BattleshipGame {
                 }
 
                 case P2TURN -> {
-                    automaticTakeTurn(player2, player1);
+                    automaticTakeTurn(cpuPlayer, player1);
                     if(player1.checkLoss()){
-                        winner = player2;
+                        winner = cpuPlayer;
                         gameState = states.END;
                         continue;
                     }
@@ -83,11 +85,36 @@ public class BattleshipGame {
 
                 case END -> {
                     System.out.println("\n\n----------- GAME OVER -----------");
-                    System.out.println(winner.getName() + " sunk all battleships and won!");
+                    System.out.println(winner.getName() + " sunk all battleships and won in " + turnCount + " turns!");
                     System.out.println();
-                    System.out.println(player1.getBoard().generateGameOverView(player2.getBoard()));
+                    System.out.println(player1.getBoard().generateGameOverView(cpuPlayer.getBoard()));
 
                     gameActive = false;
+
+                    if (cpuPlayer == winner) {
+                        pause(3000);
+                        System.out.println("\t\t\t\t      ||||");
+                        System.out.println("\t\t\t\t      |||||");
+                        System.out.println("\t\t\t\t      ||||||");
+                        System.out.println("\t\t\t\t      ||||||");
+                        System.out.println("\t\t\t\t      |||||||");
+                        System.out.println("\t\t\t\t      |||||||");
+                        System.out.println("\t\t   ////\\\\\\\\   |||||||   ////\\\\\\\\   ////\\\\\\\\");
+                        System.out.println("\t\t   ||||||||   ||||||||  ||||||||   ||||||||");
+                        System.out.println("||||||\\\\   ||||||||   ||||||||  ||||||||   ||||||||");
+                        System.out.println("|||||\\\\\\\\  ||||||||   ||||||||  ||||||||   ||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t|||||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("\t\t||||||||||||||||||||||||||||||||||||||");
+                        System.out.println("GAME OVER");
+                        System.exit(0);
+                    }
                 }
             }
         } while (gameActive);
@@ -110,11 +137,11 @@ public class BattleshipGame {
                 // --------------- Decide location -----------------
                 // Iterates until a valid input is made.
                 do{
-                    int x = (int)(Math.random() * 10);
-                    int y = (int)(Math.random() * 10);
+                    int x = (int)(Math.random() * board.grid.length);
+                    int y = (int)(Math.random() * board.grid.length);
                     location = GamePiece.coordinateToString(x, y);
 
-                    if(board.isValidCoordinate(location)){
+                    if(board.isValidCoordinateSilent(location)){
                         locationUndecided = false;
                     }
                 } while (locationUndecided);
@@ -194,7 +221,7 @@ public class BattleshipGame {
         } while (!board.addShip(piece, location, horizontal, true));
     }
 
-    private static void takeTurn(Player player, Player opponent) {
+    private static void takeTurn(Player player, Computer opponent) {
         turnCount++;
         String target;
         boolean targetUndecided = true;
@@ -211,10 +238,11 @@ public class BattleshipGame {
         // Display data about the last turn for the current player.
         if(turnCount > 1){ // At least one turn needs to occur to be able to display data
             System.out.println(opponent.getName() + " struck square " + lastSquare + ".");
-            System.out.println("It was a " + (shipStruck ? "hit" : "miss."));
+            System.out.println("It was a " + (shipStruck ? "hit!" : "miss."));
             if(shipSank){
-                System.out.println(opponent.getName() + "sunk your battleship...");
+                System.out.println(opponent.getName() + " sunk your battleship...");
             }
+            System.out.println();
         }
 
         // Main turn loop - iterates until a valid move is made.
@@ -244,29 +272,98 @@ public class BattleshipGame {
         } while (targetUndecided);
 
         pause(750);
+
+        if(shipSank){
+            System.out.println();
+            System.out.println(opponent.shipLostDialogue[cpuShipsSank]);
+            cpuShipsSank++;
+            pause(1500 * cpuShipsSank);
+        }
     }
 
-    private static void automaticTakeTurn(Player player, Player opponent) {
+    private static void automaticTakeTurn(Computer cpu, Player opponent) {
         turnCount++;
-        String target;
-        Board opponentBoard = opponent.getBoard();
 
+        String target = "NONE";
+        boolean noValidTarget = true;
+        int iterations = 0;
+
+        Board opponentBoard = opponent.getBoard();
+        ArrayList<String> checkeredTargets = opponentBoard.checkerBoard;
         ArrayList<String> validTargets = opponentBoard.unhitSquares;
-        int randomInt;
 
         System.out.println();
         System.out.println("---------------------------");
-        System.out.println(player.getName() + "'s turn!");
+        System.out.println(cpu.getName() + "'s turn!");
         System.out.println("---------------------------");
 
         pause(1000);
-        randomInt = (int)(Math.random() * validTargets.size());
-        target = validTargets.get(randomInt);
 
-        System.out.println(player.getName() + " commands a strike at " + target + "!");
+        do { // DECIDE WHICH SQUARE TO ANNIHILATE WITH UNENDING WRATH
+            if (cpu.hasKnownShip()) { // Computer has previously struck a ship before - use SMART LOGIC :D
+                if(++iterations > 4){
+                    System.out.println(cpu.getName() + " experiences analysis paralysis!");
+                    cpu.forgetShip();
+                }
+
+                int[][] translations = cpu.getTranslations();
+                Stack<String> adjacentSquares = new Stack<>();
+                String shipPos = cpu.getKnownShipLocation();
+
+                for (int[] component : translations) {
+                    String aCoord = opponentBoard.getCoordTranslated(shipPos, component[0], component[1]);
+                    if (aCoord != null) {
+                        if(opponentBoard.isValidCoordinateSilent(aCoord)) {
+                            adjacentSquares.push(aCoord);
+                        }
+                    }
+                }
+
+                if (adjacentSquares.isEmpty()) {
+                    System.out.println(cpu.getName() + " drops the ball!");
+                    cpu.forgetShip();
+
+                } else {
+                    while (!adjacentSquares.isEmpty()) {
+                        String potentialTarget = adjacentSquares.pop();
+                        Cell cell = opponentBoard.getCell(potentialTarget);
+                        if (!cell.isStruck()) {
+                            target = potentialTarget;
+                            noValidTarget = false;
+                            break;
+                        }
+                    }
+
+                    // It is possible for the CPU to check the reasonable squares surrounding the last ship piece hit and still find no
+                    // valid target. This commonly happens when the CPU is looking around the far end of a battleship he hasn't sunk yet.
+                    // In that case, there must be extra length on the other side of the cell the battleship was discovered on.
+                    if (noValidTarget) {
+                        if(cpu.getKnownShipDiscoveryLocation().equals(cpu.getKnownShipLocation())){
+                            cpu.forgetShipOrientation();
+                        } else {
+                            cpu.progressShip(cpu.getKnownShipDiscoveryLocation());
+                        }
+                    }
+                }
+            } else { // Hit squares randomly like a dummy :(
+                int randomInt;
+                if(!checkeredTargets.isEmpty()) {
+                    randomInt = (int) (Math.random() * checkeredTargets.size());
+                    target = checkeredTargets.get(randomInt);
+                } else {
+                    randomInt = (int)(Math.random() * validTargets.size());
+                    target = validTargets.get(randomInt);
+                }
+                noValidTarget = false;
+            }
+        } while (noValidTarget);
+
+        System.out.println(cpu.getName() + " commands a strike at " + target + "!");
         pause(1000);
+
         if(opponentBoard.strikeBoard(target)){
             // A successful strike was made on the board. Break out of the turn loop.
+
             // Collect data about the square that was hit to display to the next player.
             lastSquare = target.toUpperCase();
             Cell c = opponentBoard.getCell(lastSquare);
@@ -276,12 +373,18 @@ public class BattleshipGame {
 
             if(c.hasShip()){
                 shipStruck = true;
+                if(cpu.hasKnownShip()){
+                    cpu.progressShip(target);
+                } else {
+                    cpu.discoverShip(target);
+                }
+
                 if(c.getShip().getSurvivingUnits() <= 0){
                     shipSank = true;
+                    cpu.forgetShip();
                 }
             }
         }
-
         pause(1000);
     }
 

@@ -215,7 +215,9 @@ public class GUI {
                             validOption = true;
                         } else {validOption = false;}
                     } else {validOption = true;}
-                    if (validOption) {turnSystem.decideAction(c, c.getMove(option));}
+                    if (validOption) {
+                        turnSystem.decideAction(c, c.getMove(option));
+                    }
                     break;
                 default:
                     System.out.println("That's not a valid parameter!");
@@ -267,7 +269,7 @@ public class GUI {
                 generateTargets(attacker);
                 validOption = false;
             } else {
-                if (option > 0 && option < 2) {move.setTarget(playerList[option]);}
+                if (option >= 0 && option <= 2) {move.setTarget(playerList[option]);}
                 validOption = true;
             }
         } while (!validOption);
@@ -276,7 +278,14 @@ public class GUI {
 
     public void chooseActionsAll() { // TODO: Allow going back to previous fighters
         for (int i = 0; i < playerList.length; i++) {
-            chooseAction(playerList[i]);
+            Fighter c = playerList[i];
+            if (c.isFainted()) {
+                System.out.println(c.getName() + " has fainted and cannot fight!");
+                System.out.print("Type anything to move on: ");
+                input.nextLine();
+            } else { // TODO: Implement being frozen
+                chooseAction(playerList[i]);
+            }
         } chooseMoveBoss();
     }
 
@@ -297,7 +306,7 @@ public class GUI {
     }
 
     public void describeEndingGood() {
-        println("Paulo Regis, exhausted, shouts \"I yield!! I yield!\"");
+        println("Dr. Regis, exhausted, shouts \"I yield!! I yield!\"");
         println("But he still seems to have something up his sleeve...");
     }
 
@@ -309,6 +318,14 @@ public class GUI {
         println("settle into your very bones. Your movement stalls, and you realize ice is");
         println("creeping up your legs, body, arms, neck... soon, your entire vision turns");
         println("blue, and you are locked away lost in eternal winter.");
+    }
+
+    public void describeEndingNeutral() {
+        println("Unfortunately, the door being smashed to smithereens also disrupted the structural");
+        println("integrity of the surrounding room, causing the icy ceiling to cave in on everybody.");
+        println("You and your Paulomon take cover underneath a viny shield Pippin summons from the ground.");
+        println("");
+        println("As the dust clears, you see Dr. Regis on the ground underneath chunks of debris.");
     }
 
     private void println(String message) {
