@@ -66,15 +66,15 @@ public class PaulomonGame {
     }
 
     public void enactEnding() {
-        if (_TurnSystem.getEnding() > 0) {
+        ending = _TurnSystem.getEnding();
+        if (ending == 1) {
             _GUI.describeEndingGood();
-            ending = 1;
-        } else if (_TurnSystem.getEnding() < 0) {
+        } else if (ending == -1) {
             _GUI.describeEndingBad();
-            ending = -1;
+        } else if (ending == 2) {
+            _GUI.describeEndingNeutral();
         } else {
             System.out.println("INVALID ENDING");
-            ending = 0;
         }
     }
 }

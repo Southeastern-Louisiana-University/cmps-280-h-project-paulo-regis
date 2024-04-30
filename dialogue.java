@@ -20,9 +20,9 @@ public class dialogue {
                 text = "The enemy has sunk one of your battleships. Get your head in the game soldier.";
                 break;
             case 6:
-                text = "You've risen out of the battle victorious. You feel accomplished, the smell of freedom in the air. " +
-                        "As you simmer in the moment, something approaches from behind. *thwack!* " +
-                        "You've been knocked unconscious.";
+                text = "You've risen out of the battle victorious. You feel accomplished, the smell of freedom in the air. \n" +
+                        "As you simmer in the moment, something approaches from behind. *thwack!* \n" +
+                        "You've been knocked unconscious. \n";
                 break;
                 //change it to wake up first and then be introduced to each paulo-mon.
                 //This way you can read the name tags and see the stats.
@@ -37,9 +37,9 @@ public class dialogue {
                 text = "Pippin: The best boy (aka the dog with power of grass)!";
                 break;
             case 10:
-                text = "You wake up in a mysterious place unsure of how you got there. " +
-                    "Your eyes are facing the sky which looks like a bright blur as you blink to clear your vision. " +
-                    "Your Paulo-mons surround you, worried if you're ok. ";
+                text = "You wake up in a mysterious place unsure of how you got there. \n" +
+                    "Your eyes are facing the sky which looks like a bright blur as you blink to clear your vision. \n" +
+                    "Your Paulo-mons surround you, worried if you're ok. \n";
                 break;
             case 11:
                 text = "\"Are y'all happy to see me?\" ";
@@ -68,9 +68,9 @@ public class dialogue {
                         "You're no longer able to time jump. ";
                 break;
             case 17:
-                text = "A tall dark figure enters, it's shadow draping over you. " +
-                        "You stare into the figure's glowing eyes as it pulls it's hood back. " +
-                        "It's Dr. Regis! Why does he seem so ill-tempered? What could possibly make him so angry? ";
+                text = "A tall dark figure enters, it's shadow draping over you. \n" +
+                        "You stare into the figure's glowing eyes as it pulls it's hood back. \n" +
+                        "It's Dr. Regis! Why does he seem so ill-tempered? What could possibly make him so angry? \n";
                 break;
             case 18:
                 text = "The Paulo-mon whimper in fear. Pippin tucks his head under your arm and points at the top of Dr. Regis' head. ";
@@ -80,24 +80,24 @@ public class dialogue {
             case 20:
                 text = "Pippin tucks his head under your arm and points at the top of Dr. Regis' head. "; //scratch
             case 21:
-                text = "Dr. Regis freezes the surrounding area. There's no escape! " +
+                text = "Dr. Regis freezes the surrounding area. There's no escape! \n" +
                         "You and your Paulo-mon must fight to survive. ";
                 break;
             case 22:
-                text = "Nova lunges in front of you to protect you. " +
+                text = "Nova lunges in front of you to protect you. \n" +
                         "The rest follow in pursuit, awaiting your command. ";
                 break;
             case 23:
-                text =  "He's kneeling on the ground, head low." +
-                        "He looks up at you and says, \"Heh... You've beat me.\" " +
-                        "He quickly slashes the air around him with his hand creating a shell of ice. " +
-                        "He peers at you through a slot in the ice." +
-                        "He says to you, \"Answer these three questions and I will spare your world. " +
-                        "Answer them incorrectly and I'll begin the next ice age. " +
-                        "Everything you know and love will be extinct!\" ";
+                text =  "He's kneeling on the ground, head low. \n" +
+                        "He looks up at you and says, \"Heh... You've beat me.\" \n" +
+                        "He quickly slashes the air around him with his hand creating a shell of ice. \n" +
+                        "He peers at you through a slot in the ice. \n" +
+                        "He says to you, \"Answer these three questions and I will spare your world. \n" +
+                        "Answer them incorrectly and I'll begin the next ice age. \n" +
+                        "Everything you know and love will be extinct!\" \n";
                 break;
             case 24:
-                text = "He looks at his former pets standing around you, \"for every question you get wrong, " +
+                text = "He looks at his former pets standing around you, \"for every question you get wrong, \n" +
                         "I'll freeze one of these three.";
                 break;
             case 25:
@@ -117,25 +117,25 @@ public class dialogue {
 
 
             case 29:
-                text = "Dr. Regis says, \"Fine. A deal's a deal. I won't freeze your world. What fun would that be anyways.\" " +
-                        "You hug your Paulo-mon friends, assuring them everything is ok. Dr. Regis turns around and goes to fly away. " +
-                        "Nova looks up at you then at his crown. You nod to Nova and he nods back. " +
-                        "You pick Nova up, spin, and cast Nova over to Dr. Regis. Nova uses his flame powers to boost him." +
-                        "He manages to knock the crown off of Dr. Regis' head, freeing him from the curse." +
-                        "Dr. Regis falls to the ground regaining consciousness. He looks up at you." +
-                        "He says to you, \"thank you for freeing me, my student. I couldn't control myself. " +
-                        "It was like the crown had a mind of its own\" You return the Paulo-mon back to Dr. Regis " +
+                text = "Dr. Regis says, \"Fine. A deal's a deal. I won't freeze your world. What fun would that be anyways.\" \n" +
+                        "You hug your Paulo-mon friends, assuring them everything is ok. Dr. Regis turns around and goes to fly away. \n" +
+                        "Nova looks up at you then at his crown. You nod to Nova and he nods back. \n" +
+                        "You pick Nova up, spin, and cast Nova over to Dr. Regis. Nova uses his flame powers to boost himself. \n" +
+                        "He manages to knock the crown off of Dr. Regis' head, freeing him from the curse. \n" +
+                        "Dr. Regis falls to the ground regaining consciousness. He looks up at you. \n" +
+                        "He says to you, \"thank you for freeing me, my student. I couldn't control myself. \n" +
+                        "It was like the crown had a mind of its own\" You return the Paulo-mon back to Dr. Regis \n" +
                         "and they all walk off grateful for your help. ";
                 break;
             case 30:
-                text = "With all three Paulomon on the ground, unconscious and unable to fight, " +
-                        "Paulo Regis looms over you with an evil gleam in his eye. \"MWAHAHAHAHA, " +
-                        "you have failed to defeat me!! Now your world will succumb to the icy hell-scape " +
-                        "it deserves!\" The gems on his crown start to violently glow red. " +
-                        "You suddenly feel a chill settle into your very bones, your movement stalls, " +
-                        "and you start to realize ice is creeping up your legs, body, arms, neck... " +
-                        "soon, your entire vision turns blue as a tear drop streams down your cheek freezing halfway down, " +
-                        "and you are locked away lost in eternal winter. You've been defeated";
+                text = "With all three Paulomon on the ground, unconscious and unable to fight, \n" +
+                        "Paulo Regis looms over you with an evil gleam in his eye. \"MWAHAHAHAHA, \n" +
+                        "you have failed to defeat me!! Now your world will succumb to the icy hell-scape \n" +
+                        "it deserves!\" The gems on his crown start to violently glow red. \n" +
+                        "You suddenly feel a chill settle into your very bones, your movement stalls, \n" +
+                        "and you start to realize ice is creeping up your legs, body, arms, neck... \n" +
+                        "soon, your entire vision turns blue as a tear drop streams down your cheek freezing halfway down, \n" +
+                        "and you are locked away lost in eternal winter. You've been defeated.";
                 break;
             case 31:
                 text = "The End.";

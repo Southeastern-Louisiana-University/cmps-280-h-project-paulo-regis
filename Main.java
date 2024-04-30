@@ -16,7 +16,7 @@ public class Main {
 
         System.out.println("Let's jump RIGHT IN to our FIRST TRIAL, BATTLESHIP!");
 
-        //BattleshipGame.playBattleship();
+        BattleshipGame.playBattleship();
 
         //move to battle
         d.dialogue(6);
