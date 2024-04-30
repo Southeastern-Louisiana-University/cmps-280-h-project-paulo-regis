@@ -10,7 +10,7 @@ public class Main {
         dialogue d = new dialogue();
         Trivia test = new Trivia();
 
-        System.out.println("Welcome to our B-B-B-B-BOSS BATTLE!");
+        System.out.println("I am Paulo Regis. Welcome to my B-B-B-B-BOSS BATTLE!");
 
         pause();
 
