@@ -8,6 +8,7 @@ public class Board extends GamePiece {
     Cell[][] grid;
     final ArrayList<Ship> ships = new ArrayList<>();
     final ArrayList<String> unhitSquares = new ArrayList<>();
+    final ArrayList<String> checkerBoard = new ArrayList<>();
 
     public Board(){
         grid = new Cell[10][10];
@@ -16,6 +17,10 @@ public class Board extends GamePiece {
             for(int j = 0; j < grid[i].length; j++){
                 grid[i][j] = new Cell(i, j);
                 unhitSquares.add(GamePiece.coordinateToString(i, j));
+
+                if((i + j) % 2 == 0){
+                    checkerBoard.add(GamePiece.coordinateToString(i, j));
+                }
             }
         }
     }
@@ -79,6 +84,7 @@ public class Board extends GamePiece {
                 }
             }
             unhitSquares.remove(location);
+            checkerBoard.remove(location);
             return true;
         }
         return false;
@@ -103,14 +109,39 @@ public class Board extends GamePiece {
         return grid[coord[0]][coord[1]];
     }
 
+    public String getCoordTranslated(String startCoord, int xOffset, int yOffset){
+        if(isValidCoordinate(startCoord)){
+            int[] pos = parseLocation(startCoord);
+            if(pos != null){
+                pos[0] += xOffset;
+                pos[1] += yOffset;
+                String newCoord = coordinateToString(pos);
+                if(isValidCoordinateSilent(newCoord)){
+                    return newCoord;
+                }
+            }
+        }
+
+        return null;
+    }
+
     // Takes a string and ensures that it is in the format of a valid Battleship coordinate that is within the Board's boundaries.
     public boolean isValidCoordinate(String location){
         return !isInvalidCoordinate(location);
     }
 
+    public boolean isValidCoordinateSilent(String location){
+        return !isInvalidCoordinateSilent(location);
+    }
+
     public boolean isInvalidCoordinate(String location){
         int[] coord = parseLocation(location);
         return isInvalidCoordinate(coord);
+    }
+
+    public boolean isInvalidCoordinateSilent(String location){
+        int[] coord = parseLocation(location, false);
+        return isInvalidCoordinateSilent(coord);
     }
 
     public boolean isInvalidCoordinate(int[] coord){
@@ -127,6 +158,16 @@ public class Board extends GamePiece {
         }
 
         return false;
+    }
+
+    public boolean isInvalidCoordinateSilent(int[] coord){
+        // Check if location input is a valid coordinate
+        if(coord == null){
+            return true;
+        }
+
+        // Check if the strike is actually in bounds
+        return coord[0] >= grid.length || coord[1] >= grid[0].length || coord[0] < 0 || coord[1] < 0;
     }
 
     @Override
@@ -194,7 +235,7 @@ public class Board extends GamePiece {
 
     public String generateGameOverView(Board other){
         StringBuilder output = new StringBuilder();
-        output.append("\t\tPlayer 1\t\t\t|\t\t\t\tPlayer 2\n");
+        output.append("\t\tPLAYER 1\t\t\t|\t\t\t\tPLAYER 2\n");
         for(int i = 0; i <= grid.length; i++){
             output.append(rowToString(i, false));
             output.append("\t\t|\t\t");

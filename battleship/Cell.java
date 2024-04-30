@@ -66,6 +66,10 @@ public class Cell extends GamePiece {
         return true;
     }
 
+    public boolean isStruck(){
+        return struck;
+    }
+
     @Override
     public String toString(){
         return ("Cell " + coordinateToString(x, y) + " has " + (hasShip ? "a" : "no") + " ship and " + (struck ? "has" : "hasn't") + " been struck.");
